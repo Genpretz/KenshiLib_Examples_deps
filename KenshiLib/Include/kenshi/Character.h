@@ -169,14 +169,6 @@ enum UseStuffState
     IN_PRISON
 };
 
-enum SlaveStateEnum
-{
-    NOT_SLAVE,
-    IS_SLAVE,
-    ESCAPING_SLAVE,
-    EX_SLAVE
-};
-
 class Character : public RootObject, public Ogre::GeneralAllocatedObject
 {
 public:

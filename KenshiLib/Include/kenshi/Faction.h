@@ -9,6 +9,7 @@
 #include <kenshi/FactionLeader.h>
 #include <kenshi/TradeCulture.h>
 #include <kenshi/Enums.h>
+#include <boost/thread/shared_mutex.hpp>
 
 class GameData;
 class FactionUniqueSquadManager;
@@ -161,5 +162,40 @@ public:
     int platoonPeriodicUpdateIndex; // 0x268 Member
     lektor<Faction::BuildingSwaps> buildingSwaps; // 0x270 Member
     // no_addr class Faction & operator=(const class Faction & _a1);// public missing arg names
+    // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
+};
+
+class FactionManager : public Ogre::GeneralAllocatedObject
+{
+public:
+    // Ogre::AllocatedObject<Ogre::CategorisedAllocPolicy<0> > offset = 0x0, length = 0x1
+    // no_addr void FactionManager(const class FactionManager & _a1);// public missing arg names
+    FactionManager();// public RVA = 0x87FAA0
+    FactionManager* _CONSTRUCTOR();// public RVA = 0x87FAA0
+    void saveGameState(GameDataContainer* container);// public RVA = 0x374CF0
+    void savePlayerGameState(GameDataContainer* container);// public RVA = 0x374BE0
+    void clearAndDestroy();// public RVA = 0x800D00
+    void activateUnloadedPlatoons();// public RVA = 0x6B9960
+    // no_addr void addActivePlatoon(class Platoon * _a1);// public missing arg names
+    Faction* getOrCreateFaction(const std::string& id, const std::string& name);// public RVA = 0x2E7340
+    Faction* getOrCreateFaction(GameData* data);// public RVA = 0x2E71E0
+    Faction* getFactionByName(const std::string& name);// public RVA = 0x2E74A0
+    Faction* getFactionByStringID(const std::string& sid);// public RVA = 0x2E7570
+    Faction* getEmptyFaction();// public RVA = 0x2E7650
+    void setupAndLinkAllFactions();// public RVA = 0x7F57E0
+    Faction* getFactionBySquad(GameData* squadtemplate);// public RVA = 0x2E7860
+    void getCampaignGUIInfos(DatapanelGUI* pan, int cat, bool playeronly);// public RVA = 0x7F1C90
+    bool areAnyHostileCampaignsRunning();// public RVA = 0x7F1C20
+    int getNumTempPlatoons();// public RVA = 0x6B9A40
+    void updateMT(float time);// public RVA = 0x2E7040
+    void updateThreaded(float time);// public RVA = 0x2E70E0
+    void _showDebugPlatoonMarkers(bool on);// public RVA = 0x2E7140
+    const lektor<Faction*>* getAllFactions();// public RVA = 0x877240
+    lektor<Faction*> participants; // 0x0 Member
+    boost::shared_mutex addListMuto; // 0x18 Member
+    lektor<Platoon*> toAddList; // 0x38 Member
+    ~FactionManager();// public RVA = 0x879A00
+    void _DESTRUCTOR();// public RVA = 0x879A00
+    // no_addr class FactionManager & operator=(const class FactionManager & _a1);// public missing arg names
     // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
 };

@@ -1,8 +1,11 @@
-// NOT NEEDED FOR MERGE
 #pragma once
+
 #include "Enums.h"
 #include "util/hand.h"
 #include "util/OgreUnordered.h"
+#include "util/lektor.h"
+#include "util/TimeOfDay.h"
+#include "FitnessSelector.h"
 
 #include <mygui/MyGUI_Widget.h>
 #include <boost/unordered_set.hpp>
@@ -22,6 +25,70 @@ enum TalkerEnum
     T_INTERJECTOR3,
     T_WHOLE_SQUAD,
     T_TARGET_WITH_RACE
+};
+
+enum DialogActionEnum
+{
+    DA_NONE,
+    DA_TRADE,
+    DA_TALK_TO_LEADER,
+    DA_JOIN_SQUAD_WITH_EDIT,
+    DA_AFFECT_RELATIONS,
+    DA_AFFECT_REPUTATION,
+    DA_ATTACK_CHASE_FOREVER,
+    DA_GO_HOME,
+    DA_TAKE_MONEY,
+    DA_GIVE_MONEY,
+    DA_PAY_BOUNTY,
+    DA_CHARACTER_EDITOR,
+    DA_FORCE_SPEECH_TIMER,
+    DA_DECLARE_WAR,
+    DA_END_WAR,
+    DA_CLEAR_AI,
+    DA_FOLLOW_WHILE_TALKING,
+    DA_THUG_HUNTER,
+    DA_JOIN_SQUAD_FAST,
+    DA_REMEMBER_CHARACTER,
+    DA_FLAG_TEMP_ALLY,
+    DA_FLAG_TEMP_ENEMY,
+    DA_MATES_KILL_ME,
+    DA_MAKE_TARGET_RUN_FASTER,
+    DA_GIVE_TARGET_MY_SLAVES,
+    DA_TAG_ESCAPED_SLAVE,
+    DA_FREE_TARGET_SLAVE,
+    DA_MERGE_WITH_SIMILAR_SQUADS,
+    DA_SEPARATE_TO_MY_OWN_SQUAD,
+    DA_ARREST_TARGET,
+    DA_ARREST_TARGETS_CARRIED_PERSON,
+    DA_ATTACK_TOWN,
+    DA_ASSIGN_BOUNTY,
+    DA_CRIME_ALARM,
+    DA_RUN_AWAY,
+    DA_INCREASE_FACTION_RANK,
+    DA_LOCK_THIS_DIALOG,
+    DA_ASSAULT_PHASE,
+    DA_RETREAT_PHASE,
+    DA_VICTORY_PHASE,
+    DA_ENSLAVE_TARGETS_CARRIED_PERSON,
+    CHOOSE_SLAVES_SELLING,
+    CHOOSE_SLAVES_BUYING,
+    CHOOSE_PRISONER_BAIL,
+    CHOOSE_CONSCRIPTION,
+    CHOOSE_RECRUITING,
+    CHOOSE_HIRING_CONTRACT,
+    SURRENDER_NON_HUMANS,
+    CHOOSE_ANIMALS_BUYING,
+    DA_CLEAR_BOUNTY,
+    DA_PLAYER_SELL_PRISONERS,
+    DA_PLAYER_SURRENDER_MEMBER_DIFFERENT_RACE,
+    DA_SUMMON_MY_SQUAD,
+    DA_REMOVE_SLAVE_STATUS,
+    DA_OPEN_NEAREST_GATE,
+    DA_ATTACK_STAY_NEAR_HOME,
+    DA_MASSIVE_ALARM,
+    DA_ATTACK_IF_NO_COEXIST,
+    DA_KNOCKOUT,
+    DA_END
 };
 
 // TODO move?
@@ -78,8 +145,156 @@ public:
     //virtual void * __vecDelDtor(unsigned int) = 0;// public vtable offset = 0x0
 };
 
-class DialogLineData;
+class CampaignTriggerData
+{
+public:
+    GameData* what; // 0x0 Member
+    int minTime; // 0x8 Member
+    int maxTime; // 0xC Member
+    float chance; // 0x10 Member
+};
+
+class Faction;
+class WorldEventStateQueryList;
 class DialogChoiceList;
+class Dialogue;
+
+// TODO move?
+class GameDataValuePair
+{
+public:
+    GameDataValuePair(GameData* d, int v);// public RVA = 0x5207A0
+    GameDataValuePair* _CONSTRUCTOR(GameData* d, int v);// public RVA = 0x5207A0
+    GameDataValuePair();// public RVA = 0x520790
+    GameDataValuePair* _CONSTRUCTOR();// public RVA = 0x520790
+    GameData* data; // 0x0 Member
+    int val0; // 0x8 Member
+};
+
+class DialogLineData
+{
+public:
+    // VTable         : (none)
+    class DialogAction
+    {
+    public:
+        DialogActionEnum key; // 0x0 Member
+        int value; // 0x4 Member
+    };
+    class DialogCondition
+    {
+    public:
+        DialogConditionEnum key; // 0x0 Member
+        ComparisonEnum compareBy; // 0x4 Member
+        TalkerEnum who; // 0x8 Member
+        int value; // 0xC Member
+    };
+    class FlagCondition
+    {
+    public:
+        // no_addr void FlagCondition();// public
+        DialogConditionEnum key; // 0x0 Member
+        bool want; // 0x4 Member
+        unsigned int flags; // 0x8 Member
+    };
+    unsigned int targetFlagsNeeded; // 0x8 Member
+    unsigned int targetFlagsNotWanted; // 0xC Member
+    unsigned int personalityNeeded; // 0x10 Member
+    unsigned int personalityNotWanted; // 0x14 Member
+    FitnessSelector<CampaignTriggerData*> campaignTriggers; // 0x18 Member
+    lektor<GameData*> isTargetRace; // 0x78 Member
+    lektor<GameData*> isTargetSubRace_specificallyTheTarget; // 0x90 Member
+    DialogLineData* getParent() const;// public RVA = 0x5207B0
+    lektor<GameDataValuePair> givesItem; // 0xA8 Member
+    bool isForSpecificCharacter(GameData* who);// public RVA = 0x521000
+    bool hasSpecificCharacterRequirement() const;// public RVA = 0x538DA0
+    std::set<Faction*, std::less<Faction*>, Ogre::STLAllocator<Faction*, Ogre::GeneralAllocPolicy > > inTownOf; // 0xC0 Member
+    std::set<Faction*, std::less<Faction*>, Ogre::STLAllocator<Faction*, Ogre::GeneralAllocPolicy > > isTargetFaction; // 0xE8 Member
+    std::set<Faction*, std::less<Faction*>, Ogre::STLAllocator<Faction*, Ogre::GeneralAllocPolicy > > isMyFaction; // 0x110 Member
+    lektor<GameData*> isCharacter; // 0x138 Member
+    lektor<GameData*> isTargetCarryingCharacter; // 0x150 Member
+    lektor<GameData*> _hasPackage; // 0x168 Member
+    lektor<GameData*> isMyRace; // 0x180 Member
+    lektor<GameData*> isMySubRace; // 0x198 Member
+    ItemFunction hasItemType; // 0x1B0 Member
+    lektor<GameData*> hasItem; // 0x1B8 Member
+    WorldEventStateQueryList* worldState; // 0x1D0 Member
+    void _initialiseAList(const std::string& listname, lektor<GameDataValuePair>* list);// protected RVA = 0x52A4F0
+    void _initialiseAList(const std::string& listname, lektor<GameData*>* list);// protected RVA = 0x52A400
+    // no_addr void DialogLineData(const class DialogLineData & _a1);// public missing arg names
+    DialogLineData(GameData* dat);// protected RVA = 0x52A630
+    DialogLineData* _CONSTRUCTOR(GameData* dat);// protected RVA = 0x52A630
+    virtual ~DialogLineData();// protected RVA = 0x5229D0 vtable offset = 0x0
+    void _DESTRUCTOR();// protected RVA = 0x5229D0 vtable offset = 0x0
+    void setupChildren();// protected RVA = 0x52C820
+    bool checkRepeatLimits();// protected RVA = 0x520C20
+    bool checkTags(Character* me, Character* target);// protected RVA = 0x524210
+    GameData* data; // 0x1D8 Member
+    bool onceOnly; // 0x1E0 Member
+    bool isMonologue; // 0x1E1 Member
+    CharacterTypeEnum forCertainType; // 0x1E4 Member
+    DialogChoiceList* children; // 0x1E8 Member
+    lektor<DialogLineData::DialogCondition*> conditions; // 0x1F0 Member
+    lektor<DialogLineData::DialogAction*> actions; // 0x208 Member
+    int lineCount; // 0x220 Member
+    std::string* texts; // 0x228 Member
+    DialogLineData* parent; // 0x230 Member
+    float chancePermanent; // 0x238 Member
+    float chanceTemporary; // 0x23C Member
+    bool unique; // 0x240 Member
+    hand uniqueOwner; // 0x248 Member
+    float dialogRepeatMinTimeInHours; // 0x268 Member
+    TimeOfDay lastTimeSaid; // 0x270 Member
+    int score; // 0x278 Member
+    bool oneAtATime; // 0x27C Member
+    bool isLocked; // 0x27D Member
+    lektor<DialogLineData*> locks; // 0x280 Member
+    lektor<DialogLineData*> unlocks_lockMe; // 0x298 Member
+    lektor<DialogLineData*> unlocks_dontLockMe; // 0x2B0 Member
+    DialogLineData* crowdTrigger; // 0x2C8 Member
+    std::string getName() const;// public RVA = 0x4B0F40
+    bool saidItBefore();// public RVA = 0x5207C0
+    bool willTalkToEnemies();// public RVA = 0x5207E0
+    virtual bool isEmptyNode() const;// public RVA = 0x54BA70 vtable offset = 0x8
+    bool _NV_isEmptyNode() const;// public RVA = 0x54BA70 vtable offset = 0x8
+    bool isAnnouncement();// public RVA = 0x5207F0
+    void stampLastTimeSaid();// public RVA = 0x520D30
+    ogre_unordered_map<GameData*, int>::type factionRelationEffects; // 0x2D0 Member
+    DialogLineData* playerInterruptionDialog; // 0x310 Member
+    bool isInterjection; // 0x318 Member
+    TalkerEnum speaker; // 0x31C Member
+    int getScore(Character* target) const;// public RVA = 0x521170
+    int getScorePlusChildrenIfEmpty(Character* target);// public RVA = 0x521310
+    bool hasChildren() const;// public RVA = 0x520800
+    bool checkConditions(Dialogue* dialog, Character* target, bool isWordswap);// public RVA = 0x5284F0
+    DialogLineData* chooseAChild(Dialogue* who, Character* target, bool isForWordswaps);// public RVA = 0x520C90
+    std::string getText(bool _stampTime);// public RVA = 0x524BF0
+    void getText(std::string& out, bool _stampTime);// public RVA = 0x5248E0
+    std::string getStringID() const;// public RVA = 0x548120
+    GameData* getGameData();// public RVA = 0x520810
+    DialogLineData* getChildByStringID(const std::string& sid);// public RVA = 0x521750
+    void getPlayerReplies(lektor<DialogLineData*>& out, Dialogue* who, Character* target);// public RVA = 0x5290C0
+    void setParent(DialogLineData* p);// public RVA = 0x520820
+    int getMoneyCostForLine() const;// public RVA = 0x5210D0
+    const lektor<DialogLineData::DialogAction*>* getActions() const;// public RVA = 0x520830
+    // no_addr class DialogLineData & operator=(const class DialogLineData & _a1);// public missing arg names
+    // virtual void * __vecDelDtor(unsigned int _a1) = 0;// protected vtable offset = 0x0 missing arg names
+};
+
+class DialogChoiceList
+{
+public:
+    lektor<DialogLineData*> conversationChoices; // 0x0 Member
+    // no_addr void DialogChoiceList(const class DialogChoiceList & _a1);// public missing arg names
+    DialogChoiceList();// public RVA = 0x53BA80
+    DialogChoiceList* _CONSTRUCTOR();// public RVA = 0x53BA80
+    ~DialogChoiceList();// public RVA = 0x53BAE0
+    void _DESTRUCTOR();// public RVA = 0x53BAE0
+    void add(GameData* conversation, DialogLineData* parent);// public RVA = 0x551C40
+    // no_addr class DialogChoiceList & operator=(const class DialogChoiceList & _a1);// public missing arg names
+    // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
+};
+
 class CharStats;
 class CharMovement;
 class GameData;
@@ -232,4 +447,19 @@ public:
     static ogre_unordered_set<DialogueSpeechBubble*>::type speechBubbleList; // Static Member
     // no_addr class Dialogue & operator=(const class Dialogue &);// public
     // no_addr void * __vecDelDtor(unsigned int);// public
+};
+
+class WorldEventStateQueryList;
+
+class DialogDataManager
+{
+public:
+    static ogre_unordered_map<GameData*, DialogLineData*>::type allDatas; // RVA = 0x18EEC90 Static Member
+    static GameData* saveData; // RVA = 0x1AC61C0 Static Member
+    static DialogLineData* _createData(GameData* d);// private RVA = 0x551AD0
+    static void initialise();// private RVA = 0x52D390
+    static void save(GameData* d);// public RVA = 0x2C2AD0
+    static void load(GameData* d);// public RVA = 0x2C2BA0
+    static void newGameReset();// public RVA = 0x2C0E20
+    static DialogLineData* getData(GameData* d);// public RVA = 0x551B50
 };

@@ -231,6 +231,14 @@ enum CharacterTypeEnum
     OT_END
 };
 
+enum SlaveStateEnum
+{
+    NOT_SLAVE,
+    IS_SLAVE,
+    ESCAPING_SLAVE,
+    EX_SLAVE
+};
+
 enum TaskType
 {
     NULL_TASK,
