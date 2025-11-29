@@ -10,6 +10,7 @@
 #include "util/lektor.h"
 #include "util/hand.h"
 #include "util/OgreUnordered.h"
+#include "util/TripleInt.h"
 
 class GameDataContainer;
 class GameDataReference;
@@ -182,4 +183,23 @@ public:
     // no_addr class GameData & operator=(const class GameData & _a1);// public missing arg names
     // no_addr void __local_vftable_ctor_closure();// public
     // virtual void * __vecDelDtor(unsigned int _a1) = 0;// protected vtable offset = 0x0 missing arg names
+};
+
+class GameDataReference
+{
+public:
+    GameDataReference(const GameDataReference& __that);// public RVA = 0x9DCA0
+    GameDataReference* _CONSTRUCTOR(const GameDataReference& __that);// public RVA = 0x9DCA0
+    GameDataReference(const std::string& _sid, TripleInt _values);// public RVA = 0x9C6C0
+    GameDataReference* _CONSTRUCTOR(const std::string& _sid, TripleInt _values);// public RVA = 0x9C6C0
+    GameDataReference();// public RVA = 0xD3020
+    GameDataReference* _CONSTRUCTOR();// public RVA = 0xD3020
+    TripleInt values; // 0x0 Member
+    std::string sid; // 0x10 Member
+    GameData* ptr; // 0x38 Member
+    GameData* getPtr(GameDataContainer* source) const;// public RVA = 0x6BE3D0
+    ~GameDataReference();// public RVA = 0x69580
+    void _DESTRUCTOR();// public RVA = 0x69580
+    GameDataReference& operator=(const GameDataReference& __that);// public RVA = 0xA2370
+    // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
 };
