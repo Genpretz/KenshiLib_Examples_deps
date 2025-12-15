@@ -81,7 +81,7 @@ namespace KenshiLib
     // *********** DO NOT USE ***********
     // BACKWARDS COMPATIBILITY WILL NOT BE MAINTAINED FOR INTERNAL FUNCTIONS
 #ifdef KENSHILIB_INTERNAL
-    KLIB_EXPORT void Init();
+    KLIB_EXPORT bool Init();
     // returns true on success
     KLIB_EXPORT bool OverrideKenshiVersion(BinaryVersion newVersion);
 

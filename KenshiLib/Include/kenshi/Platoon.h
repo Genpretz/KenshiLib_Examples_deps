@@ -1,20 +1,12 @@
 #pragma once
 
 #include "RootObjectBase.h"
+#include "RootObject.h"
 #include "util/YesNoMaybe.h"
 #include "util/TimeOfDay.h"
 #include <string>
 #include <ogre/OgreMemoryAllocatorConfig.h>
 #include <ogre/OgreVector3.h>
-
-enum MoveSpeed
-{
-    WALK,
-    JOG,
-    RUN,
-    GROUPED,
-    NO_SPEED_CHANGE
-};
 
 enum PlatoonCreationMessage
 {
@@ -215,4 +207,92 @@ public:
     static float PLATOON_LOAD_DISTANCE; // RVA = 0x2130138 Static Member
     // no_addr class Platoon & operator=(const class Platoon & _a1);// public missing arg names
     // virtual void * __vecDelDtor(unsigned int _a1) = 0;// protected vtable offset = 0x0 missing arg names
+};
+
+class GroupSense;
+class CharacterMemory;
+class HandleList;
+class PlayerInterface;
+
+class ActivePlatoon : public RootObjectContainer
+{
+public:
+    // RootObjectContainer offset = 0x0, length = 0x68
+    virtual bool loadFromDisk(bool force, Serialisable* extra);// private RVA = 0x36B140 vtable offset = 0x0
+    bool _NV_loadFromDisk(bool force, Serialisable* extra);// private RVA = 0x36B140 vtable offset = 0x0
+    bool _recalculateIsIntact();// private RVA = 0x799A90
+    bool isAnyoneCaptured();// private RVA = 0x7998E0
+    virtual ~ActivePlatoon();// public RVA = 0x4FE7C0 vtable offset = 0x0
+    void _DESTRUCTOR();// public RVA = 0x4FE7C0 vtable offset = 0x0
+    GroupSense* _groupSense; // 0x68 Member
+    GroupSense* getGroupSense();// public RVA = 0x850620
+    CharacterMemory* getMemory();// public RVA = 0x2851F0
+    virtual bool removeObject(RootObject* c);// public RVA = 0x794540 vtable offset = 0x0
+    bool _NV_removeObject(RootObject* c);// public RVA = 0x794540 vtable offset = 0x0
+    virtual bool addActiveObject(RootObject* c);// public RVA = 0x795FE0 vtable offset = 0x0
+    bool _NV_addActiveObject(RootObject* c);// public RVA = 0x795FE0 vtable offset = 0x0
+    void addCharacterAt(RootObject* c, int index);// public RVA = 0x7953C0
+    void swapCharacters(int indexA, int indexB);// public RVA = 0x791C00
+    void emptySquadCheck();// public RVA = 0x7998B0
+    void clearAllTheUniqueNPCStates();// public RVA = 0x4FEFE0
+    bool isIntact();// public RVA = 0x7A4980
+    bool isAnimalsOnly; // 0x70 Member
+    void getCharactersInArea(lektor<RootObject*>& out, const Ogre::Vector3& pos, float radius, bool standingOnly);// public RVA = 0x6B9590
+    Character* getSquadLeader_theRealOne();// public RVA = 0x595E10
+    Character* getNearestActiveCharacter(const Ogre::Vector3& p, int floor);// public RVA = 0x791A80
+    Character* getSquadLeader();// public RVA = 0x791930
+    int getSquadSize() const;// public RVA = 0x4197B0
+    void setSquadLeader(Character* who);// public RVA = 0x790540
+    virtual bool update();// public RVA = 0x4FFC40 vtable offset = 0x0
+    bool _NV_update();// public RVA = 0x4FFC40 vtable offset = 0x0
+    void refreshInventory(bool firstTime);// public RVA = 0x4FEE60
+    void _forceRefreshInventory();// public RVA = 0x4FE1F0
+    virtual bool periodicUpdate();// public RVA = 0x4FE8E0 vtable offset = 0x40
+    bool _NV_periodicUpdate();// public RVA = 0x4FE8E0 vtable offset = 0x40
+    void serialiseEverythingToDisk(bool levelEditor);// public RVA = 0x4FEE20
+    bool isWholeSquadDown(int minusThis);// public RVA = 0x791F00
+    void setDataFilename(const std::string& f);// public RVA = 0x7F0F60
+    void setupLeaderDialogues();// public RVA = 0x2DF310
+    bool isLoaded() const;// public RVA = 0x595E20
+    void teleport(const Ogre::Vector3& pos);// public RVA = 0x37D750
+    void setName(const std::string& name);// public RVA = 0x4BDD00
+    const std::string& getName() const;// public RVA = 0x411980
+    bool getIsTrader() const;// public RVA = 0x387440
+    bool getHasVendorList() const;// public RVA = 0x4FE1D0
+    bool getHasSpecialItemsList() const;// public RVA = 0x4FE1E0
+    void setupTraderBuildings();// public RVA = 0x623810
+    Platoon* me; // 0x78 Member
+    HandleList* characterHandles; // 0x80 Member
+    void putTheSpecialCharactersInNewSquads_captured();// public RVA = 0x79AF60
+    bool checkForCharactersBeingCarried();// public RVA = 0x79B3A0
+    void restoreSquad();// public RVA = 0x7B4A30
+    // no_addr void ActivePlatoon(const class ActivePlatoon & _a1);// public missing arg names
+    ActivePlatoon(Platoon* my, DataObjectContainer* doc, Faction* f, GameData* d, Tasker* _currentGoal, const Ogre::Vector3& _posOffset);// protected RVA = 0x4FFD80
+    ActivePlatoon* _CONSTRUCTOR(Platoon* my, DataObjectContainer* doc, Faction* f, GameData* d, Tasker* _currentGoal, const Ogre::Vector3& _posOffset);// protected RVA = 0x4FFD80
+    float p_TIME; // 0x88 Member
+    ZoneMap* lastActiveZone; // 0x90 Member
+    CharacterMemory* _myMemory; // 0x98 Member
+    bool unloadCheck();// private RVA = 0x4FE450
+    YesNoMaybe setupCheck();// private RVA = 0x4FF350
+    void destroyCharacters(bool justUnload);// private RVA = 0x4FE750
+    void serialiseCharacterData();// private RVA = 0x4FEC90
+    void saveToDisk(bool levelEditor, const std::string& force);// private RVA = 0x36B770
+    virtual void loadCharacters(Ogre::Vector3 _a1, FactoryCallbackInterface* _a2);// private RVA = 0x7948D0 vtable offset = 0x48 missing arg names
+    void _NV_loadCharacters(Ogre::Vector3 _a1, FactoryCallbackInterface* _a2);// private RVA = 0x7948D0 vtable offset = 0x48 missing arg names
+    virtual void loadInstance(GameSaveState& state, bool skipSaveState, const Ogre::Vector3& pos, const Ogre::Quaternion& rot, FactoryCallbackInterface* callback, const Ogre::Vector3& positionMoved);// private RVA = 0x36F190 vtable offset = 0x0
+    void _NV_loadInstance(GameSaveState& state, bool skipSaveState, const Ogre::Vector3& pos, const Ogre::Quaternion& rot, FactoryCallbackInterface* callback, const Ogre::Vector3& positionMoved);// private RVA = 0x36F190 vtable offset = 0x0
+    Ogre::Vector3 calculateCurrentPos();// private RVA = 0x4FE5D0
+    void _checkForUniqueCharactersOnUnload();// private RVA = 0x9A6970
+    Character* squadleader; // 0xA0 Member
+    Character* backupLeader; // 0xA8 Member
+    float deactivationTimer; // 0xB0 Member
+    Ogre::Vector3 workingPos; // 0xB4 Member
+    Tasker* currentGoal; // 0xC0 Member
+    Ogre::Vector3 positionMoved; // 0xC8 Member
+    Ogre::Vector3 teleportTo; // 0xD4 Member
+    bool teleportMessage; // 0xE0 Member
+    PlayerInterface* isPlayer; // 0xE8 Member
+    bool isPhysical; // 0xF0 Member
+    // no_addr class ActivePlatoon & operator=(const class ActivePlatoon & _a1);// public missing arg names
+    // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
 };

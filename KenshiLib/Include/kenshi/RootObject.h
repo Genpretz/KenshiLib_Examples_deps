@@ -132,3 +132,98 @@ public:
     // no_addr class RootObject & operator=(const class RootObject & _a1);// public missing arg names
     // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
 };
+
+class Serialisable;
+class RootObjectContainer;
+
+class DataObjectContainer
+{
+public:
+    // VTable         : (none)
+    enum GroupType
+    {
+        TYPE_UNKNOWN,
+        TYPE_PLATOON,
+        TYPE_FACTION,
+        TYPE_TOWNLIST,
+        TYPE_ZONEMAP,
+        TYPE_BUILDING_INTERIOR
+    };
+
+    // no_addr void DataObjectContainer(const class DataObjectContainer & _a1);// public missing arg names
+    DataObjectContainer(RootObjectContainer* from);// public RVA = 0x7EB070
+    DataObjectContainer* _CONSTRUCTOR(RootObjectContainer* from);// public RVA = 0x7EB070
+    DataObjectContainer(DataObjectContainer::GroupType type);// public RVA = 0x575C50
+    DataObjectContainer* _CONSTRUCTOR(DataObjectContainer::GroupType type);// public RVA = 0x575C50
+    virtual ~DataObjectContainer();// public RVA = 0x502B10 vtable offset = 0x0
+    void _DESTRUCTOR();// public RVA = 0x502B10 vtable offset = 0x0
+    DataObjectContainer::GroupType getType() const;// public RVA = 0x588E20
+    void setupDataFile(const std::string& filename, GameDataContainer* container);// public RVA = 0x5062A0
+    // no_addr void serialiseToDisk_selfContained();// public
+    void destroyObjectDatas();// public RVA = 0x4FE0B0
+    bool isStored; // 0x8 Member
+    GameDataContainer* objectDatas; // 0x10 Member
+    std::string datasFile; // 0x18 Member
+    virtual bool loadFromDisk(bool force, Serialisable* extraData);// protected RVA = 0x36B0B0 vtable offset = 0x8
+    bool _NV_loadFromDisk(bool force, Serialisable* extraData);// protected RVA = 0x36B0B0 vtable offset = 0x8
+    DataObjectContainer::GroupType selfType; // 0x40 Member
+    // no_addr class DataObjectContainer & operator=(const class DataObjectContainer & _a1);// public missing arg names
+    // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
+};
+
+class FactoryCallbackInterface;
+
+class RootObjectContainer : public DataObjectContainer, public Ogre::GeneralAllocatedObject
+{
+public:
+    // DataObjectContainer offset = 0x0, length = 0x48
+    // Ogre::AllocatedObject<Ogre::CategorisedAllocPolicy<0> > offset = 0x49, length = 0x1
+    // no_addr void RootObjectContainer(const class RootObjectContainer & _a1);// public missing arg names
+    RootObjectContainer(DataObjectContainer* from);// public RVA = 0x7EB120
+    RootObjectContainer* _CONSTRUCTOR(DataObjectContainer* from);// public RVA = 0x7EB120
+    RootObjectContainer(DataObjectContainer::GroupType type);// public RVA = 0x575CC0
+    RootObjectContainer* _CONSTRUCTOR(DataObjectContainer::GroupType type);// public RVA = 0x575CC0
+    virtual ~RootObjectContainer();// public RVA = 0x502BD0 vtable offset = 0x0
+    void _DESTRUCTOR();// public RVA = 0x502BD0 vtable offset = 0x0
+    virtual bool addActiveObject(RootObject* b);// public RVA = 0x502D90 vtable offset = 0x10
+    bool _NV_addActiveObject(RootObject* b);// public RVA = 0x502D90 vtable offset = 0x10
+    virtual bool removeObject(RootObject* c);// public RVA = 0x502CC0 vtable offset = 0x18
+    bool _NV_removeObject(RootObject* c);// public RVA = 0x502CC0 vtable offset = 0x18
+    virtual bool update();// public RVA = 0x502D20 vtable offset = 0x20
+    bool _NV_update();// public RVA = 0x502D20 vtable offset = 0x20
+    RootObject* getThing(int id);// public RVA = 0x278BC0
+    int getNumThings() const;// public RVA = 0x278BE0
+    lektor<RootObject*>* getThings();// public RVA = 0x286760
+    virtual void getSelectedObjects(lektor<RootObject*>& out, itemType type, bool selectedOnly);// public RVA = 0x6B9890 vtable offset = 0x28
+    void _NV_getSelectedObjects(lektor<RootObject*>& out, itemType type, bool selectedOnly);// public RVA = 0x6B9890 vtable offset = 0x28
+    // no_addr void serialiseToContainer(class GameDataContainer * _a1);// public missing arg names
+    void serialiseThings(const lektor<RootObject*>& _things, GameData* outputToInstanceCollectionOfSomeKind, GameDataContainer* source, PosRotPair* offsetPosToSubtract, const std::string& mod);// public RVA = 0x36C4C0
+    void serialiseThings(GameData* outputToInstanceCollectionOfSomeKind, GameDataContainer* source, PosRotPair* offsetPosToSubtract, const std::string& mod);// public RVA = 0x36D890
+    class SpecificItemLoadFirst
+    {
+    public:
+        // VTable         : (none)
+        // no_addr void SpecificItemLoadFirst(const class RootObjectContainer::SpecificItemLoadFirst & _a1);// public missing arg names
+        SpecificItemLoadFirst(itemType BaseItemType, itemType _stateEnum, const std::string& _specificProperty, bool _desiredSpecificProperty);// public RVA = 0x7C9850
+        SpecificItemLoadFirst* _CONSTRUCTOR(itemType BaseItemType, itemType _stateEnum, const std::string& _specificProperty, bool _desiredSpecificProperty);// public RVA = 0x7C9850
+        // no_addr void SpecificItemLoadFirst();// public
+        itemType baseTypes; // 0x8 Member
+        itemType stateEnum; // 0xC Member
+        std::string specificProperty; // 0x10 Member
+        bool desiredSpecificProperty; // 0x38 Member
+        virtual bool shouldSkip(GameSaveState* state);// public RVA = 0x36AC10 vtable offset = 0x0
+        bool _NV_shouldSkip(GameSaveState* state);// public RVA = 0x36AC10 vtable offset = 0x0
+        void flip();// public RVA = 0x37D700
+        ~SpecificItemLoadFirst();// public RVA = 0x7C6380
+        void _DESTRUCTOR();// public RVA = 0x7C6380
+        // no_addr class RootObjectContainer::SpecificItemLoadFirst & operator=(const class RootObjectContainer::SpecificItemLoadFirst & _a1);// public missing arg names
+        // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
+    };
+    lektor<RootObject*> things; // 0x50 Member
+    virtual void loadToReality(bool skipSaveState, const Ogre::Vector3& positionMoved, const Ogre::Quaternion& rotOffset, FactoryCallbackInterface* callback, const std::string& specificSID, GameDataContainer* externalContainer, RootObjectContainer::SpecificItemLoadFirst* skipperClass);// protected RVA = 0x36D2C0 vtable offset = 0x30
+    void _NV_loadToReality(bool skipSaveState, const Ogre::Vector3& positionMoved, const Ogre::Quaternion& rotOffset, FactoryCallbackInterface* callback, const std::string& specificSID, GameDataContainer* externalContainer, RootObjectContainer::SpecificItemLoadFirst* skipperClass);// protected RVA = 0x36D2C0 vtable offset = 0x30
+    virtual void loadInstance(GameSaveState& state, bool skipSaveState, const Ogre::Vector3& pos, const Ogre::Quaternion& rot, FactoryCallbackInterface* callback, const Ogre::Vector3& positionMoved);// protected RVA = 0x36AC20 vtable offset = 0x38
+    void _NV_loadInstance(GameSaveState& state, bool skipSaveState, const Ogre::Vector3& pos, const Ogre::Quaternion& rot, FactoryCallbackInterface* callback, const Ogre::Vector3& positionMoved);// protected RVA = 0x36AC20 vtable offset = 0x38
+    // no_addr class RootObjectContainer & operator=(const class RootObjectContainer & _a1);// public missing arg names
+    // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
+};
