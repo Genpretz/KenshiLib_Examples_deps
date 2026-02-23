@@ -64,5 +64,5 @@ public:
     bool isValid() const;// public RVA = 0x25FB40
     bool canCastToRootObject() const;// public RVA = 0x333EF0
     bool squadMatch(const hand& h) const;// public RVA = 0x333020
-    static const hand NULL_HAND; // Static Member
+    static const hand NULL_HAND; // RVA = 0x1E375F8 Static Member
 };

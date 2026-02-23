@@ -85,14 +85,14 @@ namespace Scythe
     class PhysicsClass
     {
     public:
-        bool insert(PhysFileParams* p, _ScytheRootObjectInterfaceT* physical, NxScene* const world, const Scythe::ScythePhysicsEntityData* physEnt, const Scythe::Vector3& position, const Scythe::Matrix& rotation);// public RVA = 0x1B1A70
-        bool insert(PhysFileParams* owner, _ScytheRootObjectInterfaceT* obj, NxScene* const world, const Scythe::ScythePhysicsEntityData* physEnt, const Scythe::Vector3& position, const Scythe::Quat& rotation);// public RVA = 0x1B2010
-        bool insert(PhysFileParams* owner, _ScytheRootObjectInterfaceT* obj, NxScene* const world, const Scythe::ScythePhysicsEntityData* physEnt, const Scythe::Vector3& position);// public RVA = 0x1B1F70
-        Scythe::ScytheActor* createNewActor1(const Scythe::PhysicsActorData* act, PhysFileParams* p, _ScytheRootObjectInterfaceT* physicalObj, const Scythe::Vector3& position, NxScene* const nxScene, const Scythe::Matrix& rotation, Scythe::SkeletonData* skeleton);// protected RVA = 0x1B1160
-        Scythe::ScytheActor* createNewActor(PhysFileParams* params, const Scythe::PhysicsActorData* act, const Scythe::Vector3& position, NxScene* const nxScene, const Scythe::Matrix& rotation, Scythe::SkeletonData* skeleton);// protected RVA = 0x1A8730
-        NxJoint* createJoint1(const Scythe::PhysicsJointData* joint, NxActor* const act0, NxActor* const act1, NxScene* const nxScene, const Scythe::Vector3& positionOffset, const Scythe::Matrix& rotationOffset, const Scythe::Vector3& scale, int jointParam);// protected RVA = 0x1B0FC0
-        NxJoint* createJoint(const Scythe::PhysicsJointData* joint, NxActor* const act0, NxActor* const act1, NxScene* const nxScene, const Scythe::Vector3& positionOffset, const Scythe::Matrix& _rotationOffset, const Scythe::Vector3& scale, int jointParam);// protected RVA = 0x1A7D00
-        Scythe::SkeletonData* createSkeletalModel(PhysFileParams* p, _ScytheRootObjectInterfaceT* obj, const Scythe::PhysicsModelData* model, const Scythe::Vector3& position, const Scythe::Matrix& rotation);// protected RVA = 0x7E3D20
+        bool insert(PhysFileParams* p, _ScytheRootObjectInterfaceT* physical, NxScene* const world, const ScythePhysicsEntityData* physEnt, const Vector3& position, const Matrix& rotation);// public RVA = 0x1B1A70
+        bool insert(PhysFileParams* owner, _ScytheRootObjectInterfaceT* obj, NxScene* const world, const ScythePhysicsEntityData* physEnt, const Vector3& position, const Quat& rotation);// public RVA = 0x1B2010
+        bool insert(PhysFileParams* owner, _ScytheRootObjectInterfaceT* obj, NxScene* const world, const ScythePhysicsEntityData* physEnt, const Vector3& position);// public RVA = 0x1B1F70
+        ScytheActor* createNewActor1(const PhysicsActorData* act, PhysFileParams* p, _ScytheRootObjectInterfaceT* physicalObj, const Vector3& position, NxScene* const nxScene, const Matrix& rotation, SkeletonData* skeleton);// protected RVA = 0x1B1160
+        ScytheActor* createNewActor(PhysFileParams* params, const PhysicsActorData* act, const Vector3& position, NxScene* const nxScene, const Matrix& rotation, SkeletonData* skeleton);// protected RVA = 0x1A8730
+        NxJoint* createJoint1(const PhysicsJointData* joint, NxActor* const act0, NxActor* const act1, NxScene* const nxScene, const Vector3& positionOffset, const Matrix& rotationOffset, const Vector3& scale, int jointParam);// protected RVA = 0x1B0FC0
+        NxJoint* createJoint(const PhysicsJointData* joint, NxActor* const act0, NxActor* const act1, NxScene* const nxScene, const Vector3& positionOffset, const Matrix& _rotationOffset, const Vector3& scale, int jointParam);// protected RVA = 0x1A7D00
+        SkeletonData* createSkeletalModel(PhysFileParams* p, _ScytheRootObjectInterfaceT* obj, const PhysicsModelData* model, const Vector3& position, const Matrix& rotation);// protected RVA = 0x7E3D20
     };
 }
 
@@ -116,7 +116,7 @@ public:
     bool paused; // 0xB8 Member
     double speedMult; // 0xC0 Member
     boost::shared_mutex haltEverythingMutex; // 0xC8 Member
-    virtual unsigned long threadProc();// public RVA = 0x25F830 vtable offset = 0x0
+    virtual unsigned long threadProc() override;// public RVA = 0x25F830 vtable offset = 0x0
     unsigned long _NV_threadProc();// public RVA = 0x25F830 vtable offset = 0x0
     virtual void forceLoopMT();// public RVA = 0x25F770 vtable offset = 0x18
     void _NV_forceLoopMT();// public RVA = 0x25F770 vtable offset = 0x18
@@ -171,7 +171,7 @@ public:
     void _DESTRUCTOR();// public RVA = 0x7E08E0 vtable offset = 0x0
     PhysicsActual* getBackthread();// public RVA = 0x7DAA10
     virtual void updateUT() = 0;// public vtable offset = 0x20
-    virtual void backThreadUpdate(float _a1, bool _a2) = 0;// public vtable offset = 0x0 missing arg names
+    virtual void backThreadUpdate(float _a1, bool _a2) override = 0;// public vtable offset = 0x0 missing arg names
     PhysicsHullT* createTriggerHull(const Ogre::Vector3& pos, const Ogre::Vector3& size, RootObject* user);// public RVA = 0x4CC3D0
     SimplePhysXEntity* createStaticCapsule(const Ogre::Vector3& pos, float h, float w);// public RVA = 0x4CD7D0
     void destroy(PhysicsThreadedBaseInterface* hull);// public RVA = 0xF15E0
@@ -220,9 +220,9 @@ public:
     PhysicsActual* _CONSTRUCTOR();// public RVA = 0x7DBF70
     virtual ~PhysicsActual();// public RVA = 0x7DC020 vtable offset = 0x0
     void _DESTRUCTOR();// public RVA = 0x7DC020 vtable offset = 0x0
-    virtual void updateUT();// public RVA = 0x4CD350 vtable offset = 0x0
+    virtual void updateUT() override;// public RVA = 0x4CD350 vtable offset = 0x0
     void _NV_updateUT();// public RVA = 0x4CD350 vtable offset = 0x0
-    virtual void backThreadUpdate(float time, bool _useOwnTimers);// public RVA = 0x7DBE00 vtable offset = 0x0
+    virtual void backThreadUpdate(float time, bool _useOwnTimers) override;// public RVA = 0x7DBE00 vtable offset = 0x0
     void _NV_backThreadUpdate(float time, bool _useOwnTimers);// public RVA = 0x7DBE00 vtable offset = 0x0
     void threadJunkPreBT();// public RVA = 0x4CBEA0
     void threadJunkPostBT();// public RVA = 0x4CD1C0
@@ -249,7 +249,7 @@ public:
     {
     public:
         // NxUserTriggerReport offset = 0x0, length = 0x8
-        virtual void onTrigger(NxShape& triggerShape, NxShape& otherShape, NxShapeFlag status);// public RVA = 0x4CCF40 vtable offset = 0x0
+        virtual void onTrigger(NxShape& triggerShape, NxShape& otherShape, NxShapeFlag status) override;// public RVA = 0x4CCF40 vtable offset = 0x0
         void _NV_onTrigger(NxShape& triggerShape, NxShape& otherShape, NxShapeFlag status);// public RVA = 0x4CCF40 vtable offset = 0x0
         void updateFrameEndMT();// public RVA = 0x4CD0D0
         ogre_unordered_map<hand, hand>::type triggerUpdateMap; // 0x8 Member

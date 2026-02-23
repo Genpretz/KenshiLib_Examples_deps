@@ -42,13 +42,13 @@ public:
     void _DESTRUCTOR();// public RVA = 0xCD3E0
     void load(GameData* state);// public RVA = 0xD0150
     void save(GameData* state) const;// public RVA = 0xCFB10
-    LimbState getState(RobotLimbs::Limb limb) const;// public RVA = 0xCD410
-    Item* getLimb(RobotLimbs::Limb limb) const;// public RVA = 0xCD420
+    LimbState getState(Limb limb) const;// public RVA = 0xCD410
+    Item* getLimb(Limb limb) const;// public RVA = 0xCD420
     int getMask() const;// public RVA = 0xCD430
-    void setLimb(RobotLimbs::Limb limb, LimbState state, Item* item);// public RVA = 0xCFD90
+    void setLimb(Limb limb, LimbState state, Item* item);// public RVA = 0xCFD90
     RootObject* getInventoryInterface(bool create);// public RVA = 0xD0490
     void destroyInventoryInterface();// public RVA = 0xCD480
-    Item* getLimbItem(RobotLimbs::Limb l);// public RVA = 0x6431B0
+    Item* getLimbItem(Limb l);// public RVA = 0x6431B0
     Character* character; // 0x0 Member
     RootObject* inventory; // 0x8 Member
     LimbState states[0x4]; // 0x10 Member
@@ -287,4 +287,3 @@ public:
     // no_addr void __local_vftable_ctor_closure();// public
     // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
 };
-

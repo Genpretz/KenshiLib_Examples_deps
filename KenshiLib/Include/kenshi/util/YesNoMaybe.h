@@ -8,13 +8,13 @@ public:
     {
         NO,
         YES,
-        MAYBE    
+        MAYBE
     };
 
     YesNoMaybe(int a);// public RVA = 0x2C4510
     YesNoMaybe* _CONSTRUCTOR(int a);// public RVA = 0x2C4510
-    YesNoMaybe(YesNoMaybe & k);// public RVA = 0x2914B0
-    YesNoMaybe* _CONSTRUCTOR(YesNoMaybe & k);// public RVA = 0x2914B0
+    YesNoMaybe(YesNoMaybe& k);// public RVA = 0x2914B0
+    YesNoMaybe* _CONSTRUCTOR(YesNoMaybe& k);// public RVA = 0x2914B0
     YesNoMaybe(YesNoMaybe::ynm k);// public RVA = 0x167DF0
     YesNoMaybe* _CONSTRUCTOR(YesNoMaybe::ynm k);// public RVA = 0x167DF0
     YesNoMaybe();// public RVA = 0x5C0360

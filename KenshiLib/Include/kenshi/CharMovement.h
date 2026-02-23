@@ -27,16 +27,6 @@ enum NxControllerAction
     NX_ACTION_PUSH
 };
 
-// TODO move?
-enum MoveSpeed
-{
-    WALK,
-    JOG,
-    RUN,
-    GROUPED,
-    NO_SPEED_CHANGE
-};
-
 // TODO move
 class physHit
 {
@@ -130,8 +120,8 @@ class NxUserControllerHitReport
 {
 public:
     // VTable         : (none)
-    virtual NxControllerAction onShapeHit(const NxControllerShapeHit & _a1) = 0;// public vtable offset = 0x0 missing arg names
-    virtual NxControllerAction onControllerHit(const NxControllersHit & _a1) = 0;// public vtable offset = 0x8 missing arg names
+    virtual NxControllerAction onShapeHit(const NxControllerShapeHit& _a1) = 0;// public vtable offset = 0x0 missing arg names
+    virtual NxControllerAction onControllerHit(const NxControllersHit& _a1) = 0;// public vtable offset = 0x8 missing arg names
     virtual ~NxUserControllerHitReport();// protected RVA = 0x663FD0 vtable offset = 0x10
     void _DESTRUCTOR();// protected RVA = 0x663FD0 vtable offset = 0x10
     // no_addr void NxUserControllerHitReport(const class NxUserControllerHitReport & _a1);// public missing arg names
@@ -159,13 +149,13 @@ public:
     void _NV__setPositionAndTeleport(Ogre::Vector3 p, int floor);// public RVA = 0x6648F0 vtable offset = 0x20
     virtual void _setPositionSimple(Ogre::Vector3 p);// public RVA = 0x664910 vtable offset = 0x28
     void _NV__setPositionSimple(Ogre::Vector3 p);// public RVA = 0x664910 vtable offset = 0x28
-    virtual void faceDirection(const Ogre::Vector3 & dir);// public RVA = 0x664930 vtable offset = 0x30
-    void _NV_faceDirection(const Ogre::Vector3 & dir);// public RVA = 0x664930 vtable offset = 0x30
-    virtual void lookatPosition(const Ogre::Vector3 & pos);// public RVA = 0x664940 vtable offset = 0x38
-    void _NV_lookatPosition(const Ogre::Vector3 & pos);// public RVA = 0x664940 vtable offset = 0x38
-    virtual const Ogre::Vector3 & getPosition() const;// public RVA = 0x664950 vtable offset = 0x40
-    const Ogre::Vector3 & _NV_getPosition() const;// public RVA = 0x664950 vtable offset = 0x40
-    const Ogre::Vector3 & getFacingDirection() const;// public RVA = 0x2ADB90
+    virtual void faceDirection(const Ogre::Vector3& dir);// public RVA = 0x664930 vtable offset = 0x30
+    void _NV_faceDirection(const Ogre::Vector3& dir);// public RVA = 0x664930 vtable offset = 0x30
+    virtual void lookatPosition(const Ogre::Vector3& pos);// public RVA = 0x664940 vtable offset = 0x38
+    void _NV_lookatPosition(const Ogre::Vector3& pos);// public RVA = 0x664940 vtable offset = 0x38
+    virtual const Ogre::Vector3& getPosition() const;// public RVA = 0x664950 vtable offset = 0x40
+    const Ogre::Vector3& _NV_getPosition() const;// public RVA = 0x664950 vtable offset = 0x40
+    const Ogre::Vector3& getFacingDirection() const;// public RVA = 0x2ADB90
     Ogre::Vector3 getDestination() const;// public RVA = 0x65E050
     bool isProbablyStuck() const;// public RVA = 0x60C4B0
     virtual bool pathOk() const;// public RVA = 0x664960 vtable offset = 0x48
@@ -178,24 +168,24 @@ public:
     bool _NV_isDestinationReached() const;// public RVA = 0x664980 vtable offset = 0x60
     virtual int amInsideTownWalls();// public RVA = 0x664990 vtable offset = 0x68
     int _NV_amInsideTownWalls();// public RVA = 0x664990 vtable offset = 0x68
-    virtual void manualMovement(const Ogre::Vector3 & desiredMotion);// public RVA = 0x65D680 vtable offset = 0x70
-    void _NV_manualMovement(const Ogre::Vector3 & desiredMotion);// public RVA = 0x65D680 vtable offset = 0x70
-    virtual void setDestination(Building * who, UpdatePriority pri);// public RVA = 0x6649B0 vtable offset = 0x78
-    void _NV_setDestination(Building * who, UpdatePriority pri);// public RVA = 0x6649B0 vtable offset = 0x78
-    virtual void setDestination(Character * who, UpdatePriority pri);// public RVA = 0x6649A0 vtable offset = 0x80
-    void _NV_setDestination(Character * who, UpdatePriority pri);// public RVA = 0x6649A0 vtable offset = 0x80
-    virtual void setDestination(RootObjectBase * target, UpdatePriority pri);// public RVA = 0x65DBF0 vtable offset = 0x88
-    void _NV_setDestination(RootObjectBase * target, UpdatePriority pri);// public RVA = 0x65DBF0 vtable offset = 0x88
-    virtual void setDestination(const Ogre::Vector3 & dest, UpdatePriority pri, bool _a3);// public RVA = 0x65F470 vtable offset = 0x90
-    void _NV_setDestination(const Ogre::Vector3 & dest, UpdatePriority pri, bool _a3);// public RVA = 0x65F470 vtable offset = 0x90
+    virtual void manualMovement(const Ogre::Vector3& desiredMotion);// public RVA = 0x65D680 vtable offset = 0x70
+    void _NV_manualMovement(const Ogre::Vector3& desiredMotion);// public RVA = 0x65D680 vtable offset = 0x70
+    virtual void setDestination(const Ogre::Vector3& dest, UpdatePriority pri, bool _a3);// public RVA = 0x65F470 vtable offset = 0x90
+    void _NV_setDestination(const Ogre::Vector3& dest, UpdatePriority pri, bool _a3);// public RVA = 0x65F470 vtable offset = 0x90
+    virtual void setDestination(RootObjectBase* target, UpdatePriority pri);// public RVA = 0x65DBF0 vtable offset = 0x88
+    void _NV_setDestination(RootObjectBase* target, UpdatePriority pri);// public RVA = 0x65DBF0 vtable offset = 0x88
+    virtual void setDestination(Character* who, UpdatePriority pri);// public RVA = 0x6649A0 vtable offset = 0x80
+    void _NV_setDestination(Character* who, UpdatePriority pri);// public RVA = 0x6649A0 vtable offset = 0x80
+    virtual void setDestination(Building* who, UpdatePriority pri);// public RVA = 0x6649B0 vtable offset = 0x78
+    void _NV_setDestination(Building* who, UpdatePriority pri);// public RVA = 0x6649B0 vtable offset = 0x78
     virtual void halt();// public RVA = 0x65DB90 vtable offset = 0x98
     void _NV_halt();// public RVA = 0x65DB90 vtable offset = 0x98
-    bool setRoadDestination(const Ogre::Vector3 & dest);// public RVA = 0x65F1C0
+    bool setRoadDestination(const Ogre::Vector3& dest);// public RVA = 0x65F1C0
     void setRoadPreference(float w);// public RVA = 0x663DB0
-    RoadFollower * extractRoadFollower();// public RVA = 0x65DC50
-    void setCurrentRoadFollower(const Ogre::Vector3 & d, RoadFollower * r);// public RVA = 0x65F780
-    virtual void setPatrolInput(PatrolInfo & patrol);// public RVA = 0x6649C0 vtable offset = 0xA0
-    void _NV_setPatrolInput(PatrolInfo & patrol);// public RVA = 0x6649C0 vtable offset = 0xA0
+    RoadFollower* extractRoadFollower();// public RVA = 0x65DC50
+    void setCurrentRoadFollower(const Ogre::Vector3& d, RoadFollower* r);// public RVA = 0x65F780
+    virtual void setPatrolInput(PatrolInfo& patrol);// public RVA = 0x6649C0 vtable offset = 0xA0
+    void _NV_setPatrolInput(PatrolInfo& patrol);// public RVA = 0x6649C0 vtable offset = 0xA0
     virtual void setDesiredSpeed(MoveSpeed speed);// public RVA = 0x6649D0 vtable offset = 0xA8
     void _NV_setDesiredSpeed(MoveSpeed speed);// public RVA = 0x6649D0 vtable offset = 0xA8
     void setDesiredSpeed(float speed);// public RVA = 0x332E40
@@ -227,12 +217,12 @@ public:
     Ogre::Vector3 direction; // 0xD0 Member
     Ogre::Vector3 destination; // 0xDC Member
     Ogre::Vector3 pathDestination; // 0xE8 Member
-    RoadFollower * roadFollower; // 0xF8 Member
+    RoadFollower* roadFollower; // 0xF8 Member
     float roadWeight; // 0x100 Member
-    virtual NxControllerAction onShapeHit(const NxControllerShapeHit & hit);// protected RVA = 0x664A20 vtable offset = 0x0
-    NxControllerAction _NV_onShapeHit(const NxControllerShapeHit & hit);// protected RVA = 0x664A20 vtable offset = 0x0
-    virtual NxControllerAction onControllerHit(const NxControllersHit & hit);// protected RVA = 0x664A30 vtable offset = 0x0
-    NxControllerAction _NV_onControllerHit(const NxControllersHit & hit);// protected RVA = 0x664A30 vtable offset = 0x0
+    virtual NxControllerAction onShapeHit(const NxControllerShapeHit& hit) override;// protected RVA = 0x664A20 vtable offset = 0x0
+    NxControllerAction _NV_onShapeHit(const NxControllerShapeHit& hit);// protected RVA = 0x664A20 vtable offset = 0x0
+    virtual NxControllerAction onControllerHit(const NxControllersHit& hit) override;// protected RVA = 0x664A30 vtable offset = 0x0
+    NxControllerAction _NV_onControllerHit(const NxControllersHit& hit);// protected RVA = 0x664A30 vtable offset = 0x0
     // no_addr class AbstractMovementBase & operator=(const class AbstractMovementBase & _a1);// public missing arg names
     // no_addr void __local_vftable_ctor_closure();// public
     // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x10 missing arg names
@@ -286,22 +276,6 @@ public:
     void _DESTRUCTOR();// public RVA = 0x5C20B0
     // no_addr class MotionFilter & operator=(const class MotionFilter & _a1);// public missing arg names
     // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
-};
-
-enum swordStateEnum
-{
-    CHOP_WEAPON,
-    BLOCK,
-    REACTION_BLOCK,
-    STARTUP_STATE,
-    DECISION,
-    CIRCLE_MENACINGLY,
-    WAIT_MENACINGLY,
-    HESITATE,
-    STUMBLE,
-    COMBAT_FINISHED,
-    TARGET_PATHFINDING_STARTUP,
-    TARGET_PATHFINDING
 };
 
 class CharMovement;
@@ -413,31 +387,31 @@ public:
     CharMovement* _CONSTRUCTOR();// public RVA = 0x662490
     virtual ~CharMovement();// public RVA = 0x662620 vtable offset = 0x0
     void _DESTRUCTOR();// public RVA = 0x662620 vtable offset = 0x0
-    virtual void create(Character * c, AnimationClass * an, const Ogre::Vector3 & _pos);// public RVA = 0x662160 vtable offset = 0xB0
-    void _NV_create(Character * c, AnimationClass * an, const Ogre::Vector3 & _pos);// public RVA = 0x662160 vtable offset = 0xB0
-    virtual void _setPositionAndTeleport(const Ogre::Vector3 & p, int floor);// public RVA = 0x65E1C0 vtable offset = 0xB8
-    void _NV__setPositionAndTeleport(const Ogre::Vector3 & p, int floor);// public RVA = 0x65E1C0 vtable offset = 0xB8
-    virtual void _setPositionDirectionAndTeleport(const Ogre::Vector3 & position, const Ogre::Quaternion & orientation);// public RVA = 0x65E260 vtable offset = 0xC0
-    void _NV__setPositionDirectionAndTeleport(const Ogre::Vector3 & position, const Ogre::Quaternion & orientation);// public RVA = 0x65E260 vtable offset = 0xC0
-    virtual void _setPositionSimple(const Ogre::Vector3 & p);// public RVA = 0x65E0F0 vtable offset = 0xC8
-    void _NV__setPositionSimple(const Ogre::Vector3 & p);// public RVA = 0x65E0F0 vtable offset = 0xC8
+    virtual void create(Character* c, AnimationClass* an, const Ogre::Vector3& _pos);// public RVA = 0x662160 vtable offset = 0xB0
+    void _NV_create(Character* c, AnimationClass* an, const Ogre::Vector3& _pos);// public RVA = 0x662160 vtable offset = 0xB0
+    virtual void _setPositionAndTeleport(const Ogre::Vector3& p, int floor);// public RVA = 0x65E1C0 vtable offset = 0xB8
+    void _NV__setPositionAndTeleport(const Ogre::Vector3& p, int floor);// public RVA = 0x65E1C0 vtable offset = 0xB8
+    virtual void _setPositionDirectionAndTeleport(const Ogre::Vector3& position, const Ogre::Quaternion& orientation);// public RVA = 0x65E260 vtable offset = 0xC0
+    void _NV__setPositionDirectionAndTeleport(const Ogre::Vector3& position, const Ogre::Quaternion& orientation);// public RVA = 0x65E260 vtable offset = 0xC0
+    virtual void _setPositionSimple(const Ogre::Vector3& p);// public RVA = 0x65E0F0 vtable offset = 0xC8
+    void _NV__setPositionSimple(const Ogre::Vector3& p);// public RVA = 0x65E0F0 vtable offset = 0xC8
     bool isRunning();// public RVA = 0x65E6C0
-    bool isRunningAway(const Ogre::Vector3 & from);// public RVA = 0x65E6F0
+    bool isRunningAway(const Ogre::Vector3& from);// public RVA = 0x65E6F0
     CombatMovementController combatMover; // 0x118 Member
     FormationMover combatMover2; // 0x288 Member
     FlockingTools flockingTools; // 0x2D0 Member
-    Formation * formation; // 0x310 Member
-    Formation * enemyFormation; // 0x318 Member
-    HavokCharacter * havokCharacter; // 0x320 Member
-    ConstantTracerT * tracer; // 0x328 Member
-    void formationUpdateCallback(const Ogre::Vector3 & _pos, const hand & target, const Ogre::Vector3 & heading, Formation * caller);// public RVA = 0x2AE050
+    Formation* formation; // 0x310 Member
+    Formation* enemyFormation; // 0x318 Member
+    HavokCharacter* havokCharacter; // 0x320 Member
+    ConstantTracerT* tracer; // 0x328 Member
+    void formationUpdateCallback(const Ogre::Vector3& _pos, const hand& target, const Ogre::Vector3& heading, Formation* caller);// public RVA = 0x2AE050
     void trackAnimationMovement(bool on);// public RVA = 0x65DAC0
-    virtual hand getHandle();// public RVA = 0x65F170 vtable offset = 0x0
+    virtual hand getHandle() override;// public RVA = 0x65F170 vtable offset = 0x0
     hand _NV_getHandle();// public RVA = 0x65F170 vtable offset = 0x0
     virtual void handleChanged();// public RVA = 0x6617B0 vtable offset = 0xD0
     void _NV_handleChanged();// public RVA = 0x6617B0 vtable offset = 0xD0
     float getRadius();// public RVA = 0x65D4B0
-    virtual void update(float _TIME);// public RVA = 0x65F820 vtable offset = 0x0
+    virtual void update(float _TIME) override;// public RVA = 0x65F820 vtable offset = 0x0
     void _NV_update(float _TIME);// public RVA = 0x65F820 vtable offset = 0x0
     void pausedUpdate();// public RVA = 0x65D930
     void twoFrameUpdate(float _TIME);// public RVA = 0x65D650
@@ -445,61 +419,61 @@ public:
     void periodicUpdate(float time);// public RVA = 0x660640
     Ogre::Vector3 predictNextPosition(bool accurate);// public RVA = 0x65D960
     float getMaximumPossibleMovement() const;// public RVA = 0x65DA60
-    virtual void faceDirection(const Ogre::Vector3 & dir);// public RVA = 0x664AD0 vtable offset = 0x0
-    void _NV_faceDirection(const Ogre::Vector3 & dir);// public RVA = 0x664AD0 vtable offset = 0x0
-    virtual void lookatPosition(const Ogre::Vector3 & pos);// public RVA = 0x65D510 vtable offset = 0x0
-    void _NV_lookatPosition(const Ogre::Vector3 & pos);// public RVA = 0x65D510 vtable offset = 0x0
-    virtual bool pathOk() const;// public RVA = 0x65E080 vtable offset = 0x0
+    virtual void faceDirection(const Ogre::Vector3& dir) override;// public RVA = 0x664AD0 vtable offset = 0x0
+    void _NV_faceDirection(const Ogre::Vector3& dir);// public RVA = 0x664AD0 vtable offset = 0x0
+    virtual void lookatPosition(const Ogre::Vector3& pos) override;// public RVA = 0x65D510 vtable offset = 0x0
+    void _NV_lookatPosition(const Ogre::Vector3& pos);// public RVA = 0x65D510 vtable offset = 0x0
+    virtual bool pathOk() const override;// public RVA = 0x65E080 vtable offset = 0x0
     bool _NV_pathOk() const;// public RVA = 0x65E080 vtable offset = 0x0
-    virtual bool pathFailed() const;// public RVA = 0x65E0B0 vtable offset = 0x0
+    virtual bool pathFailed() const override;// public RVA = 0x65E0B0 vtable offset = 0x0
     bool _NV_pathFailed() const;// public RVA = 0x65E0B0 vtable offset = 0x0
-    virtual bool isDestinationReached() const;// public RVA = 0x65E630 vtable offset = 0x0
+    virtual bool isDestinationReached() const override;// public RVA = 0x65E630 vtable offset = 0x0
     bool _NV_isDestinationReached() const;// public RVA = 0x65E630 vtable offset = 0x0
     virtual bool isIdle() const;// public RVA = 0x65E670 vtable offset = 0xD8
     bool _NV_isIdle() const;// public RVA = 0x65E670 vtable offset = 0xD8
-    const hand & isStandingOnSomething();// public RVA = 0x64620
-    virtual void setDestination(Building * who, UpdatePriority pri);// public RVA = 0x65DEB0 vtable offset = 0x0
-    void _NV_setDestination(Building * who, UpdatePriority pri);// public RVA = 0x65DEB0 vtable offset = 0x0
-    virtual void setDestination(Character * who, UpdatePriority pri);// public RVA = 0x65DD00 vtable offset = 0x0
-    void _NV_setDestination(Character * who, UpdatePriority pri);// public RVA = 0x65DD00 vtable offset = 0x0
-    virtual void setDestination(RootObjectBase * target, UpdatePriority pri);// public RVA = 0x65DCA0 vtable offset = 0x0
-    void _NV_setDestination(RootObjectBase * target, UpdatePriority pri);// public RVA = 0x65DCA0 vtable offset = 0x0
-    virtual void setDestination(const Ogre::Vector3 & dest, UpdatePriority priority, bool notVertical);// public RVA = 0x660AF0 vtable offset = 0x0
-    void _NV_setDestination(const Ogre::Vector3 & dest, UpdatePriority priority, bool notVertical);// public RVA = 0x660AF0 vtable offset = 0x0
-    virtual bool playerMoveOrderWhileInCombatMode(const Ogre::Vector3 & pos);// public RVA = 0x65DF10 vtable offset = 0xE0
-    bool _NV_playerMoveOrderWhileInCombatMode(const Ogre::Vector3 & pos);// public RVA = 0x65DF10 vtable offset = 0xE0
-    virtual void halt();// public RVA = 0x65F4F0 vtable offset = 0x0
+    const hand& isStandingOnSomething();// public RVA = 0x64620
+    virtual void setDestination(const Ogre::Vector3& dest, UpdatePriority priority, bool notVertical) override;// public RVA = 0x660AF0 vtable offset = 0x0
+    void _NV_setDestination(const Ogre::Vector3& dest, UpdatePriority priority, bool notVertical);// public RVA = 0x660AF0 vtable offset = 0x0
+    virtual void setDestination(RootObjectBase* target, UpdatePriority pri) override;// public RVA = 0x65DCA0 vtable offset = 0x0
+    void _NV_setDestination(RootObjectBase* target, UpdatePriority pri);// public RVA = 0x65DCA0 vtable offset = 0x0
+    virtual void setDestination(Character* who, UpdatePriority pri) override;// public RVA = 0x65DD00 vtable offset = 0x0
+    void _NV_setDestination(Character* who, UpdatePriority pri);// public RVA = 0x65DD00 vtable offset = 0x0
+    virtual void setDestination(Building* who, UpdatePriority pri) override;// public RVA = 0x65DEB0 vtable offset = 0x0
+    void _NV_setDestination(Building* who, UpdatePriority pri);// public RVA = 0x65DEB0 vtable offset = 0x0
+    virtual bool playerMoveOrderWhileInCombatMode(const Ogre::Vector3& pos);// public RVA = 0x65DF10 vtable offset = 0xE0
+    bool _NV_playerMoveOrderWhileInCombatMode(const Ogre::Vector3& pos);// public RVA = 0x65DF10 vtable offset = 0xE0
+    virtual void halt() override;// public RVA = 0x65F4F0 vtable offset = 0x0
     void _NV_halt();// public RVA = 0x65F4F0 vtable offset = 0x0
     void invalidatePath();// public RVA = 0x65E010
-    virtual void setPatrolInput(PatrolInfo & patrol);// public RVA = 0x65E320 vtable offset = 0x0
-    void _NV_setPatrolInput(PatrolInfo & patrol);// public RVA = 0x65E320 vtable offset = 0x0
-    void movedBy(const Ogre::Vector3 & pos);// public RVA = 0x65DA80
-    void combatMovementOffensive(const hand & target, float minDistance, float maxDistance, float circle, bool power, float speedLimit);// public RVA = 0x2AE450
+    virtual void setPatrolInput(PatrolInfo& patrol) override;// public RVA = 0x65E320 vtable offset = 0x0
+    void _NV_setPatrolInput(PatrolInfo& patrol);// public RVA = 0x65E320 vtable offset = 0x0
+    void movedBy(const Ogre::Vector3& pos);// public RVA = 0x65DA80
+    void combatMovementOffensive(const hand& target, float minDistance, float maxDistance, float circle, bool power, float speedLimit);// public RVA = 0x2AE450
     bool isCombatMovementBlockedByCharacters();// public RVA = 0x2AE740
-    void setLookatTarget(const hand & lookatCharacter);// public RVA = 0x2ADE30
+    void setLookatTarget(const hand& lookatCharacter);// public RVA = 0x2ADE30
     void destroy();// public RVA = 0x65F6C0
     void restore();// public RVA = 0x661810
     bool dontEverRecreateMe; // 0x330 Member
     Ogre::Aabb getAABB() const;// public RVA = 0x661570
     void refreshClickHull();// public RVA = 0x6612F0
-    void teleportCollisionHull(const Ogre::Vector3 & _pos);// public RVA = 0x65D4E0
+    void teleportCollisionHull(const Ogre::Vector3& _pos);// public RVA = 0x65D4E0
     int getCurrentFloor() const;// public RVA = 0x660960
     bool isIndoorsHideMeCheck() const;// public RVA = 0x65E7B0
     bool isIndoors() const;// public RVA = 0x65D570
-    virtual void manualMovement(const Ogre::Vector3 & v);// public RVA = 0x65D740 vtable offset = 0x0
-    void _NV_manualMovement(const Ogre::Vector3 & v);// public RVA = 0x65D740 vtable offset = 0x0
+    virtual void manualMovement(const Ogre::Vector3& v) override;// public RVA = 0x65D740 vtable offset = 0x0
+    void _NV_manualMovement(const Ogre::Vector3& v);// public RVA = 0x65D740 vtable offset = 0x0
     bool isInsideBuildingLoadedInterior() const;// public RVA = 0x65D5A0
     bool hasClickHull() const;// public RVA = 0x4CB140
     bool isTrackingAnimationMode() const;// public RVA = 0x595E00
     bool isWaypointMoveMode() const;// public RVA = 0x2ADBB0
     void setMovementMode(MovementMode mode);// public RVA = 0x65E990
-    void setDirectMovement(const Ogre::Vector3 & d, float limit);// public RVA = 0x332E50
+    void setDirectMovement(const Ogre::Vector3& d, float limit);// public RVA = 0x332E50
     physHit getLastGroundTraceResultMT();// public RVA = 0x65F5E0
-    Character * getCharacter();// public RVA = 0x2ADBC0
-    virtual NxControllerAction onShapeHit(const NxControllerShapeHit & hit);// private RVA = 0x65DAF0 vtable offset = 0x0
-    NxControllerAction _NV_onShapeHit(const NxControllerShapeHit & hit);// private RVA = 0x65DAF0 vtable offset = 0x0
-    virtual NxControllerAction onControllerHit(const NxControllersHit & hit);// private RVA = 0x65DB00 vtable offset = 0x0
-    NxControllerAction _NV_onControllerHit(const NxControllersHit & hit);// private RVA = 0x65DB00 vtable offset = 0x0
+    Character* getCharacter();// public RVA = 0x2ADBC0
+    virtual NxControllerAction onShapeHit(const NxControllerShapeHit& hit) override;// private RVA = 0x65DAF0 vtable offset = 0x0
+    NxControllerAction _NV_onShapeHit(const NxControllerShapeHit& hit);// private RVA = 0x65DAF0 vtable offset = 0x0
+    virtual NxControllerAction onControllerHit(const NxControllersHit& hit) override;// private RVA = 0x65DB00 vtable offset = 0x0
+    NxControllerAction _NV_onControllerHit(const NxControllersHit& hit);// private RVA = 0x65DB00 vtable offset = 0x0
     bool toGround();// private RVA = 0x65E9E0
     void updateGroundMaterial();// private RVA = 0x65D800
     int floorGroup; // 0x334 Member
@@ -518,9 +492,9 @@ public:
     Ogre::Vector3 trackingAnimRelocationVector; // 0x380 Member
     Ogre::Vector3 desiredMotion; // 0x38C Member
     float moveLimit; // 0x398 Member
-    AnimationClass * animation; // 0x3A0 Member
-    Character * character; // 0x3A8 Member
-    PhysicsHullT * clickHull; // 0x3B0 Member
+    AnimationClass* animation; // 0x3A0 Member
+    Character* character; // 0x3A8 Member
+    PhysicsHullT* clickHull; // 0x3B0 Member
     // no_addr class CharMovement & operator=(const class CharMovement & _a1);// public missing arg names
     // no_addr void __local_vftable_ctor_closure();// public
     // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x10 missing arg names

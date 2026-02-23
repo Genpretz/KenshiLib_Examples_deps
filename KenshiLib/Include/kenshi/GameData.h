@@ -47,15 +47,15 @@ public:
     // VTable         : (none)
     int validity; // 0x8 Member
     GameDataContainer* sourceContainer; // 0x10 Member
-    virtual ~GameData();// protected RVA = 0x7A290 vtable offset = 0x0
-    void _DESTRUCTOR();// protected RVA = 0x7A290 vtable offset = 0x0
+    virtual ~GameData();// protected RVA = 0xB5ED0 vtable offset = 0x0
+    void _DESTRUCTOR();// protected RVA = 0xB5ED0 vtable offset = 0x0
     // no_addr void GameData(const class GameData & _a1);// public missing arg names
-    GameData();// protected RVA = 0x51C560
-    GameData* _CONSTRUCTOR();// protected RVA = 0x51C560
+    GameData();// protected RVA = 0x66AE10
+    GameData* _CONSTRUCTOR();// protected RVA = 0x66AE10
     bool isStandalone; // 0x18 Member
-    bool isValid() const;// public RVA = 0x42EF10
-    GameDataContainer* getSourceContainer() const;// public RVA = 0x8D330
-    void destroy();// public RVA = 0x6530B0
+    bool isValid() const;// public RVA = 0x5463D0
+    GameDataContainer* getSourceContainer() const;// public RVA = 0xCD110
+    void destroy();// public RVA = 0x7EA970
     enum DataType
     {
         NONE,
@@ -91,75 +91,75 @@ public:
     itemType type; // 0x50 Member
     std::string stringID; // 0x58 Member
     bool isFromActiveFile; // 0x80 Member
-    void initialise(itemType t, bool isActive);// public RVA = 0x51B8F0
-    bool loadFromFile(const std::string& path, itemType _type);// public RVA = 0x564D60
-    bool saveToFile(const std::string& path);// public RVA = 0x561C20
-    void storeHandleList(const ogre_unordered_set<hand>::type& handle, const std::string& _name);// public RVA = 0x55E1D0
-    void storeHandleList(const lektor<hand>& handle, const std::string& _name);// public RVA = 0x55E0E0
-    void getHandleList(ogre_unordered_set<hand>::type& out, const std::string& _name);// public RVA = 0x55E680
-    void getHandleList(lektor<hand>& out, const std::string& _name);// public RVA = 0x55E500
-    void storeHandle(const hand& handle, const std::string& _name, bool redirect);// public RVA = 0x55DD70
-    bool getHandle(hand& handle, const std::string& _name);// public RVA = 0x55E2F0
-    bool updateFrom(const GameData* from, bool mod);// public RVA = 0x240380
-    bool isValueActive(const std::string& v) const;// public RVA = 0x23FF10
+    void initialise(itemType t, bool isActive);// public RVA = 0x66A1A0
+    bool loadFromFile(const std::string& path, itemType _type);// public RVA = 0x6C3030
+    bool saveToFile(const std::string& path);// public RVA = 0x6BFEF0
+    void storeHandleList(const ogre_unordered_set<hand>::type& handle, const std::string& _name);// public RVA = 0x6BC4A0
+    void storeHandleList(const lektor<hand>& handle, const std::string& _name);// public RVA = 0x6BC3B0
+    void getHandleList(ogre_unordered_set<hand>::type& out, const std::string& _name);// public RVA = 0x6BC950
+    void getHandleList(lektor<hand>& out, const std::string& _name);// public RVA = 0x6BC7D0
+    void storeHandle(const hand& handle, const std::string& _name, bool redirect);// public RVA = 0x6BC040
+    bool getHandle(hand& handle, const std::string& _name);// public RVA = 0x6BC5C0
+    bool updateFrom(const GameData* from, bool mod);// public RVA = 0x2E5FE0
+    bool isValueActive(const std::string& v) const;// public RVA = 0x2E5A70
     // no_addr bool isRefDeleted(const class std::basic_string<char,std::char_traits<char>,std::allocator<char> > & _a1);// public missing arg names
-    bool isRefActive(const std::string& v) const;// public RVA = 0x23FC30
-    void addFileName(const std::string& n, const std::string& v, std::string filestype, std::string category, bool vis);// public RVA = 0x2C2F20
-    void addString(const std::string& n, const std::string& v, std::string category, bool vis);// public RVA = 0x77B20
+    bool isRefActive(const std::string& v) const;// public RVA = 0x2E56E0
+    void addFileName(const std::string& n, const std::string& v, std::string filestype, std::string category, bool vis);// public RVA = 0x387540
+    void addString(const std::string& n, const std::string& v, std::string category, bool vis);// public RVA = 0xB2B30
     // no_addr void add(const class std::basic_string<char,std::char_traits<char>,std::allocator<char> > & _a1, class Ogre::Quaternion _a2);// public missing arg names
-    void add(const std::string& n, Ogre::Vector3 v);// public RVA = 0x77C20
-    void add(const std::string& n, bool v, std::string category, bool vis);// public RVA = 0x76D50
-    void add(const std::string& n, float v, std::string category, bool vis, bool isSlider);// public RVA = 0x77BA0
-    void add(const std::string& n, unsigned int v, std::string category, bool vis);// public RVA = 0x4FA6A0
-    void add(const std::string& n, int v, std::string category, bool vis);// public RVA = 0x76CD0
-    GameDataReference* getGameDataReferenceObject(const std::string& list, const std::string& id);// public RVA = 0x7A3D0
-    void addToList(const std::string& list, const std::string& id, int val, int val2, int val3);// public RVA = 0x7A4B0
-    void removeFromList(const std::string& list, int id);// public RVA = 0x697090
-    void removeFromList(const std::string& list, const std::string& id);// public RVA = 0x569600
-    bool findInList(const std::string& list, const std::string& SID);// public RVA = 0x232B80
-    void clearList(const std::string& n);// public RVA = 0x7A5C0
+    void add(const std::string& n, Ogre::Vector3 v);// public RVA = 0xB2C70
+    void add(const std::string& n, bool v, std::string category, bool vis);// public RVA = 0xB1880
+    void add(const std::string& n, float v, std::string category, bool vis, bool isSlider);// public RVA = 0xB2BD0
+    void add(const std::string& n, unsigned int v, std::string category, bool vis);// public RVA = 0x6410C0
+    void add(const std::string& n, int v, std::string category, bool vis);// public RVA = 0xB17E0
+    GameDataReference* getGameDataReferenceObject(const std::string& list, const std::string& id);// public RVA = 0xB6060
+    void addToList(const std::string& list, const std::string& id, int val, int val2, int val3);// public RVA = 0xB6170
+    void removeFromList(const std::string& list, int id);// public RVA = 0x83E760
+    void removeFromList(const std::string& list, const std::string& id);// public RVA = 0x6CA6D0
+    bool findInList(const std::string& list, const std::string& SID);// public RVA = 0x2D5290
+    void clearList(const std::string& n);// public RVA = 0xB62C0
     // no_addr void clearAllLists();// public
-    void clearEverything();// public RVA = 0x459890
-    void clearInstances();// public RVA = 0x457720
-    const std::string& getFromList(const std::string& n, int index) const;// public RVA = 0x70490
-    const std::string& getFromList_random(const std::string& n) const;// public RVA = 0x55DB40
-    int getListSize(const std::string& n) const;// public RVA = 0x93420
-    bool listExists(const std::string& n) const;// public RVA = 0x46C0B0
-    bool listExistsAndNotEmpty(const std::string& n) const;// public RVA = 0x70550
-    void getAllFromList(const std::string& n, lektor<std::string >& list);// public RVA = 0x4FBFC0
-    const Ogre::vector<GameDataReference>::type* getReferenceList(const std::string& listname);// public RVA = 0x43340
-    const Ogre::vector<GameDataReference>::type* getReferenceListIfExists(const std::string& listname) const;// public RVA = 0x22ECC0
-    Ogre::vector<GameDataReference>::type* _getReferenceList_nonConst(const std::string& listname);// public RVA = 0x939D0
-    void getAllFromListAsDatas(const std::string& n, lektor<GameData*>& list, GameDataContainer* dataContainer, itemType type);// public RVA = 0x7A5E0
-    GameData* getFromListAsData(const std::string& n, int index, GameDataContainer* dataContainer, itemType type);// public RVA = 0x7A710
-    const TripleInt& getValueFromList(const std::string& n, int index) const;// public RVA = 0x8A7C0
+    void clearEverything();// public RVA = 0x57ACA0
+    void clearInstances();// public RVA = 0x578380
+    const std::string& getFromList(const std::string& n, int index) const;// public RVA = 0xA92C0
+    const std::string& getFromList_random(const std::string& n) const;// public RVA = 0x6BBE10
+    int getListSize(const std::string& n) const;// public RVA = 0xD4770
+    bool listExists(const std::string& n) const;// public RVA = 0x5919A0
+    bool listExistsAndNotEmpty(const std::string& n) const;// public RVA = 0xA93B0
+    void getAllFromList(const std::string& n, lektor<std::string >& list);// public RVA = 0x643000
+    const Ogre::vector<GameDataReference>::type* getReferenceList(const std::string& listname);// public RVA = 0x6DEF0
+    const Ogre::vector<GameDataReference>::type* getReferenceListIfExists(const std::string& listname) const;// public RVA = 0x2D0490
+    Ogre::vector<GameDataReference>::type* _getReferenceList_nonConst(const std::string& listname);// public RVA = 0xD5010
+    void getAllFromListAsDatas(const std::string& n, lektor<GameData*>& list, GameDataContainer* dataContainer, itemType type);// public RVA = 0xB62F0
+    GameData* getFromListAsData(const std::string& n, int index, GameDataContainer* dataContainer, itemType type);// public RVA = 0xB6470
+    const TripleInt& getValueFromList(const std::string& n, int index) const;// public RVA = 0xC9B70
     class ObjectInstance
     {
     public:
-        ObjectInstance(const GameData::ObjectInstance& __that);// public RVA = 0xB6080
-        ObjectInstance* _CONSTRUCTOR(const GameData::ObjectInstance& __that);// public RVA = 0xB6080
-        ObjectInstance();// public RVA = 0xB5160
-        ObjectInstance* _CONSTRUCTOR();// public RVA = 0xB5160
+        ObjectInstance(const GameData::ObjectInstance& __that);// public RVA = 0xFF760
+        ObjectInstance* _CONSTRUCTOR(const GameData::ObjectInstance& __that);// public RVA = 0xFF760
+        ObjectInstance();// public RVA = 0xFE490
+        ObjectInstance* _CONSTRUCTOR();// public RVA = 0xFE490
         Ogre::Vector3 pos; // 0x0 Member
         Ogre::Quaternion rot; // 0xC Member
         std::string refID; // 0x20 Member
         short created; // 0x48 Member
         short modified; // 0x4A Member
         lektor<std::string > stateIDs; // 0x50 Member
-        const GameData::ObjectInstance& operator=(const GameData::ObjectInstance& a);// public RVA = 0x2C23F0
-        void updateInstancedObjectAttachedDatas(const ogre_unordered_map<itemType, GameData*>::type& states);// public RVA = 0x55D950
-        ~ObjectInstance();// public RVA = 0x65AD0
-        void _DESTRUCTOR();// public RVA = 0x65AD0
+        const GameData::ObjectInstance& operator=(const GameData::ObjectInstance& a);// public RVA = 0x386780
+        void updateInstancedObjectAttachedDatas(const ogre_unordered_map<itemType, GameData*>::type& states);// public RVA = 0x6BBC20
+        ~ObjectInstance();// public RVA = 0x9A9D0
+        void _DESTRUCTOR();// public RVA = 0x9A9D0
         // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
     };
     // Typedef        : StringObjectInstanceMap
-    void addSavedInstancedObject(const std::string& id, const std::string& refID, int modIndex, const Ogre::Vector3& pos, const Ogre::Quaternion& rot, const lektor<std::string >& states);// public RVA = 0x5693C0
-    void deleteInstancedObject(const std::string& id, int modIndex);// public RVA = 0x569500
+    void addSavedInstancedObject(const std::string& id, const std::string& refID, int modIndex, const Ogre::Vector3& pos, const Ogre::Quaternion& rot, const lektor<std::string >& states);// public RVA = 0x6CA420
+    void deleteInstancedObject(const std::string& id, int modIndex);// public RVA = 0x6CA5A0
     // no_addr void updateInstancedObject(const class std::basic_string<char,std::char_traits<char>,std::allocator<char> > & _a1, class Ogre::Vector3 _a2, class Ogre::Quaternion _a3);// public missing arg names
-    void getInstances(lektor<GameData::ObjectInstance*>& out);// public RVA = 0x453AE0
+    void getInstances(lektor<GameData::ObjectInstance*>& out);// public RVA = 0x573A00
     std::map<std::string, GameData::ObjectInstance, std::less<std::string >, Ogre::STLAllocator<std::pair<std::string const, GameData::ObjectInstance>, Ogre::GeneralAllocPolicy > > instances; // 0x88 Member
     int currentID; // 0xB0 Member
-    int getNewID();// public RVA = 0x55D440
+    int getNewID();// public RVA = 0x6BB710
     boost::unordered::unordered_map<std::string, bool, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, bool>, Ogre::GeneralAllocPolicy > > activeValues; // 0xB8 Member
     boost::unordered::unordered_map<std::string, bool, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, bool>, Ogre::GeneralAllocPolicy > > bdata; // 0xF8 Member
     boost::unordered::unordered_map<std::string, std::string, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, std::string >, Ogre::GeneralAllocPolicy > > sdata; // 0x138 Member
@@ -170,16 +170,16 @@ public:
     boost::unordered::unordered_map<std::string, Ogre::Quaternion, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, Ogre::Quaternion>, Ogre::GeneralAllocPolicy > > quatdata; // 0x278 Member
     boost::unordered::unordered_map<std::string, Ogre::vector<GameDataReference>::type, boost::hash<std::string >, std::equal_to<std::string >, Ogre::STLAllocator<std::pair<std::string const, Ogre::vector<GameDataReference>::type >, Ogre::GeneralAllocPolicy > > objectReferences; // 0x2B8 Member
     unsigned short createdIndex; // 0x2F8 Member
-    Ogre::ColourValue getColor(const std::string& name);// public RVA = 0x76DD0
-    Ogre::Vector3 getColorVec(const std::string& name);// public RVA = 0x93660
-    void setColor(const std::string& name, const Ogre::Vector3& c);// public RVA = 0x93730
-    void setColor(const std::string& name, const Ogre::ColourValue& c);// public RVA = 0x936F0
+    Ogre::ColourValue getColor(const std::string& name);// public RVA = 0xB1920
+    Ogre::Vector3 getColorVec(const std::string& name);// public RVA = 0xD4A30
+    void setColor(const std::string& name, const Ogre::Vector3& c);// public RVA = 0xD4B30
+    void setColor(const std::string& name, const Ogre::ColourValue& c);// public RVA = 0xD4AE0
     // no_addr enum GameData::DataType getDataType(const class std::basic_string<char,std::char_traits<char>,std::allocator<char> > & _a1);// public missing arg names
-    GameData::ObjectInstance* addANewInstancedObject(GameData::ObjectInstance* from);// public RVA = 0x5602E0
-    void addANewInstancedObject(GameData* referenceObject, const PosRotPair& positionRotation);// public RVA = 0x5601F0
-    void addANewInstancedObject(GameData* referenceObject);// public RVA = 0x560140
-    GameData::ObjectInstance* addANewInstancedObject(const GameSaveState& referenceObject, const PosRotPair& position, PosRotPair* offsetPos);// public RVA = 0x564130
-    void addDeletedInstance(const std::string& instanceID);// public RVA = 0x560460
+    GameData::ObjectInstance* addANewInstancedObject(GameData::ObjectInstance* from);// public RVA = 0x6BE5B0
+    void addANewInstancedObject(GameData* referenceObject, const PosRotPair& positionRotation);// public RVA = 0x6BE4C0
+    void addANewInstancedObject(GameData* referenceObject);// public RVA = 0x6BE410
+    GameData::ObjectInstance* addANewInstancedObject(const GameSaveState& referenceObject, const PosRotPair& position, PosRotPair* offsetPos);// public RVA = 0x6C2400
+    void addDeletedInstance(const std::string& instanceID);// public RVA = 0x6BE730
     // no_addr class GameData & operator=(const class GameData & _a1);// public missing arg names
     // no_addr void __local_vftable_ctor_closure();// public
     // virtual void * __vecDelDtor(unsigned int _a1) = 0;// protected vtable offset = 0x0 missing arg names

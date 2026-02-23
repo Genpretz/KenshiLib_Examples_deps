@@ -14,12 +14,12 @@ public:
     void setTime(double hrs);// public RVA = 0xCCF80
     void addHours(double hours);// public RVA = 0xCCF90
     void addMinutes(double mins);// public RVA = 0x268070
-    bool operator>(const TimeOfDay & a) const;// public RVA = 0x1623A0
-    bool operator>=(const TimeOfDay & a) const;// public RVA = 0x1623C0
-    bool operator<(const TimeOfDay & a) const;// public RVA = 0x166DE0
-    bool operator<=(const TimeOfDay & a) const;// public RVA = 0x166E00
-    bool operator==(const TimeOfDay & a) const;// public RVA = 0x334FA0
-    const TimeOfDay & operator=(const TimeOfDay & a);// public RVA = 0xCCFA0
+    bool operator>(const TimeOfDay& a) const;// public RVA = 0x1623A0
+    bool operator>=(const TimeOfDay& a) const;// public RVA = 0x1623C0
+    bool operator<(const TimeOfDay& a) const;// public RVA = 0x166DE0
+    bool operator<=(const TimeOfDay& a) const;// public RVA = 0x166E00
+    bool operator==(const TimeOfDay& a) const;// public RVA = 0x334FA0
+    const TimeOfDay& operator=(const TimeOfDay& a);// public RVA = 0xCCFA0
     double getTotalHours() const;// public RVA = 0xCCFB0
     double getTotalMinutes() const;// public RVA = 0x2D53A0
     double getTotalSeconds() const;// public RVA = 0x850480

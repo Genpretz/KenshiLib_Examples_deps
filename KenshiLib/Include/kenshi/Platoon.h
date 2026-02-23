@@ -7,6 +7,7 @@
 #include <string>
 #include <ogre/OgreMemoryAllocatorConfig.h>
 #include <ogre/OgreVector3.h>
+#include "Enums.h"
 
 enum PlatoonCreationMessage
 {
@@ -115,11 +116,11 @@ public:
     bool regenerates; // 0xD9 Member
     GameData* myBaseHomeTownData; // 0xE0 Member
     hand chooseNewHome();// public RVA = 0x99CF30
-    virtual bool isUnconcious() const;// public RVA = 0x997350 vtable offset = 0x0
+    virtual bool isUnconcious() const override;// public RVA = 0x997350 vtable offset = 0x0
     bool _NV_isUnconcious() const;// public RVA = 0x997350 vtable offset = 0x0
     SquadType getSquadType() const;// public RVA = 0x2872A0
     void setSquadType(SquadType t);// public RVA = 0x9C2D00
-    virtual TownBase* getCurrentTownLocation();// public RVA = 0x9C1F70 vtable offset = 0x0
+    virtual TownBase* getCurrentTownLocation() override;// public RVA = 0x9C1F70 vtable offset = 0x0
     TownBase* _NV_getCurrentTownLocation();// public RVA = 0x9C1F70 vtable offset = 0x0
     CampaignInstance* hasCampaign();// public RVA = 0x9C2D90
     float priceMultWhenITrade; // 0xE8 Member
@@ -136,20 +137,20 @@ public:
     UniquePlatoon* _NV_isUnique();// public RVA = 0x7F1090 vtable offset = 0xB0
     std::string getPlatoonStringID() const;// public RVA = 0x384710
     Blackboard* getBlackboard();// public RVA = 0x268260
-    virtual itemType getDataType() const;// public RVA = 0x7F10A0 vtable offset = 0x0
+    virtual itemType getDataType() const override;// public RVA = 0x7F10A0 vtable offset = 0x0
     itemType _NV_getDataType() const;// public RVA = 0x7F10A0 vtable offset = 0x0
     void erasePlatoonFile();// public RVA = 0x7EB960
     void showDebugMarker(bool on);// public RVA = 0x7EAB80
     // no_addr int getIndex();// public
-    virtual StateBroadcastData* getStateBroadcast();// public RVA = 0x792870 vtable offset = 0x0
+    virtual StateBroadcastData* getStateBroadcast() override;// public RVA = 0x792870 vtable offset = 0x0
     StateBroadcastData* _NV_getStateBroadcast();// public RVA = 0x792870 vtable offset = 0x0
     virtual GameData* serialiseEverything(GameDataContainer* dataContainer, bool levelEditor);// public RVA = 0x3729D0 vtable offset = 0xB8
     GameData* _NV_serialiseEverything(GameDataContainer* dataContainer, bool levelEditor);// public RVA = 0x3729D0 vtable offset = 0xB8
     virtual void loadStateData(GameData* state);// public RVA = 0x7EBE90 vtable offset = 0xC0
     void _NV_loadStateData(GameData* state);// public RVA = 0x7EBE90 vtable offset = 0xC0
-    virtual GameSaveState serialise(GameDataContainer* container, GameData* refList, PosRotPair* offsetPosToSubtract);// public RVA = 0x7F10D0 vtable offset = 0x0
+    virtual GameSaveState serialise(GameDataContainer* container, GameData* refList, PosRotPair* offsetPosToSubtract) override;// public RVA = 0x7F10D0 vtable offset = 0x0
     GameSaveState _NV_serialise(GameDataContainer* container, GameData* refList, PosRotPair* offsetPosToSubtract);// public RVA = 0x7F10D0 vtable offset = 0x0
-    virtual void loadFromSerialise(GameSaveState* state);// public RVA = 0x7F10B0 vtable offset = 0x0
+    virtual void loadFromSerialise(GameSaveState* state) override;// public RVA = 0x7F10B0 vtable offset = 0x0
     void _NV_loadFromSerialise(GameSaveState* state);// public RVA = 0x7F10B0 vtable offset = 0x0
     void reprocessTask(Tasker* t);// public RVA = 0x4FE290
     void taskIsComplete(Tasker* t);// public RVA = 0x7EACC0
@@ -183,7 +184,7 @@ public:
     bool isPersistentSquad();// public RVA = 0x7EB310
     void setPersistentSquad(bool on);// public RVA = 0x7EAB70
     bool isResidentSquad; // 0x116 Member
-    virtual Ownerships* getOwnerships();// public RVA = 0x7F10C0 vtable offset = 0x0
+    virtual Ownerships* getOwnerships() override;// public RVA = 0x7F10C0 vtable offset = 0x0
     Ownerships* _NV_getOwnerships();// public RVA = 0x7F10C0 vtable offset = 0x0
     Character* getNearestActiveCharacter(const Ogre::Vector3& p, int floor);// public RVA = 0x792B00
     Character* getSquadLeader();// public RVA = 0x799C40
@@ -218,7 +219,7 @@ class ActivePlatoon : public RootObjectContainer
 {
 public:
     // RootObjectContainer offset = 0x0, length = 0x68
-    virtual bool loadFromDisk(bool force, Serialisable* extra);// private RVA = 0x36B140 vtable offset = 0x0
+    virtual bool loadFromDisk(bool force, Serialisable* extra) override;// private RVA = 0x36B140 vtable offset = 0x0
     bool _NV_loadFromDisk(bool force, Serialisable* extra);// private RVA = 0x36B140 vtable offset = 0x0
     bool _recalculateIsIntact();// private RVA = 0x799A90
     bool isAnyoneCaptured();// private RVA = 0x7998E0
@@ -227,9 +228,9 @@ public:
     GroupSense* _groupSense; // 0x68 Member
     GroupSense* getGroupSense();// public RVA = 0x850620
     CharacterMemory* getMemory();// public RVA = 0x2851F0
-    virtual bool removeObject(RootObject* c);// public RVA = 0x794540 vtable offset = 0x0
+    virtual bool removeObject(RootObject* c) override;// public RVA = 0x794540 vtable offset = 0x0
     bool _NV_removeObject(RootObject* c);// public RVA = 0x794540 vtable offset = 0x0
-    virtual bool addActiveObject(RootObject* c);// public RVA = 0x795FE0 vtable offset = 0x0
+    virtual bool addActiveObject(RootObject* c) override;// public RVA = 0x795FE0 vtable offset = 0x0
     bool _NV_addActiveObject(RootObject* c);// public RVA = 0x795FE0 vtable offset = 0x0
     void addCharacterAt(RootObject* c, int index);// public RVA = 0x7953C0
     void swapCharacters(int indexA, int indexB);// public RVA = 0x791C00
@@ -243,7 +244,7 @@ public:
     Character* getSquadLeader();// public RVA = 0x791930
     int getSquadSize() const;// public RVA = 0x4197B0
     void setSquadLeader(Character* who);// public RVA = 0x790540
-    virtual bool update();// public RVA = 0x4FFC40 vtable offset = 0x0
+    virtual bool update() override;// public RVA = 0x4FFC40 vtable offset = 0x0
     bool _NV_update();// public RVA = 0x4FFC40 vtable offset = 0x0
     void refreshInventory(bool firstTime);// public RVA = 0x4FEE60
     void _forceRefreshInventory();// public RVA = 0x4FE1F0
@@ -279,7 +280,7 @@ public:
     void saveToDisk(bool levelEditor, const std::string& force);// private RVA = 0x36B770
     virtual void loadCharacters(Ogre::Vector3 _a1, FactoryCallbackInterface* _a2);// private RVA = 0x7948D0 vtable offset = 0x48 missing arg names
     void _NV_loadCharacters(Ogre::Vector3 _a1, FactoryCallbackInterface* _a2);// private RVA = 0x7948D0 vtable offset = 0x48 missing arg names
-    virtual void loadInstance(GameSaveState& state, bool skipSaveState, const Ogre::Vector3& pos, const Ogre::Quaternion& rot, FactoryCallbackInterface* callback, const Ogre::Vector3& positionMoved);// private RVA = 0x36F190 vtable offset = 0x0
+    virtual void loadInstance(GameSaveState& state, bool skipSaveState, const Ogre::Vector3& pos, const Ogre::Quaternion& rot, FactoryCallbackInterface* callback, const Ogre::Vector3& positionMoved) override;// private RVA = 0x36F190 vtable offset = 0x0
     void _NV_loadInstance(GameSaveState& state, bool skipSaveState, const Ogre::Vector3& pos, const Ogre::Quaternion& rot, FactoryCallbackInterface* callback, const Ogre::Vector3& positionMoved);// private RVA = 0x36F190 vtable offset = 0x0
     Ogre::Vector3 calculateCurrentPos();// private RVA = 0x4FE5D0
     void _checkForUniqueCharactersOnUnload();// private RVA = 0x9A6970

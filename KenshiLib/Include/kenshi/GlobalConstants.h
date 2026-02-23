@@ -4,7 +4,7 @@ class GameData;
 class GlobalConstants
 {
 public:
-    void setup(class GameData*);// RVA = 0x6BA770
+    void setup(GameData* data);// public RVA = 0x869D20
     float EXTRA_BLEED_FROM_BODYPARTS_MULTIPLIER; // 0x0 Member
     float BLEED_RATE_MULTIPLIER; // 0x4 Member
     float INITIAL_BLEED_LOSS_MULTIPLIER; // 0x8 Member

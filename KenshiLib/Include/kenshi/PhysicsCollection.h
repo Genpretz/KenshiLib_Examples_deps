@@ -137,14 +137,14 @@ public:
         RotatingEnt* _CONSTRUCTOR(Ogre::MovableObject* entity, int floor, GameData* _mat, GameData* part);// public RVA = 0x555AD0
         virtual ~RotatingEnt();// public RVA = 0x547470 vtable offset = 0x0
         void _DESTRUCTOR();// public RVA = 0x547470 vtable offset = 0x0
-        virtual void update(float productionSpeed);// public RVA = 0x547520 vtable offset = 0x0
+        virtual void update(float productionSpeed) override;// public RVA = 0x547520 vtable offset = 0x0
         void _NV_update(float productionSpeed);// public RVA = 0x547520 vtable offset = 0x0
-        virtual float updateAim(float speed, const Ogre::Vector3& target);// public RVA = 0x549310 vtable offset = 0x0
+        virtual float updateAim(float speed, const Ogre::Vector3& target) override;// public RVA = 0x549310 vtable offset = 0x0
         float _NV_updateAim(float speed, const Ogre::Vector3& target);// public RVA = 0x549310 vtable offset = 0x0
-        virtual bool isRotatingEnt() const;// public RVA = 0x569DD0 vtable offset = 0x0
+        virtual bool isRotatingEnt() const override;// public RVA = 0x569DD0 vtable offset = 0x0
         bool _NV_isRotatingEnt() const;// public RVA = 0x569DD0 vtable offset = 0x0
         float getRotationPower() const;// public RVA = 0x4CB0C0
-        virtual void weatherUpdated(WeatherInstance* weather, bool newWeather);// public RVA = 0x5494E0 vtable offset = 0x0
+        virtual void weatherUpdated(WeatherInstance* weather, bool newWeather) override;// public RVA = 0x5494E0 vtable offset = 0x0
         void _NV_weatherUpdated(WeatherInstance* weather, bool newWeather);// public RVA = 0x5494E0 vtable offset = 0x0
         Ogre::Vector3 rotAxis; // 0x40 Member
         Ogre::Radian rotAngle; // 0x4C Member

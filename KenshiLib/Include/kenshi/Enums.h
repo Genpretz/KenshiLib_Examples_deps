@@ -887,3 +887,28 @@ enum SquadType
     SQ_RESIDENT,
     SQ_ROAMING
 };
+
+enum MoveSpeed
+{
+    WALK,
+    JOG,
+    RUN,
+    GROUPED,
+    NO_SPEED_CHANGE
+};
+
+enum swordStateEnum
+{
+    CHOP_WEAPON,
+    BLOCK,
+    REACTION_BLOCK,
+    STARTUP_STATE,
+    DECISION,
+    CIRCLE_MENACINGLY,
+    WAIT_MENACINGLY,
+    HESITATE,
+    STUMBLE,
+    COMBAT_FINISHED,
+    TARGET_PATHFINDING_STARTUP,
+    TARGET_PATHFINDING
+};

@@ -90,11 +90,11 @@ public:
     TitleScreen* _CONSTRUCTOR();// public RVA = 0x917740
     virtual ~TitleScreen();// public RVA = 0x9125C0 vtable offset = 0x0
     void _DESTRUCTOR();// public RVA = 0x9125C0 vtable offset = 0x0
-    virtual void clear();// public RVA = 0x911680 vtable offset = 0x0
+    virtual void clear() override;// public RVA = 0x911680 vtable offset = 0x0
     void _NV_clear();// public RVA = 0x911680 vtable offset = 0x0
-    virtual void show(bool on);// public RVA = 0x9116D0 vtable offset = 0x0
+    virtual void show(bool on) override;// public RVA = 0x9116D0 vtable offset = 0x0
     void _NV_show(bool on);// public RVA = 0x9116D0 vtable offset = 0x0
-    virtual void update();// public RVA = 0x9120D0 vtable offset = 0x0
+    virtual void update() override;// public RVA = 0x9120D0 vtable offset = 0x0
     void _NV_update();// public RVA = 0x9120D0 vtable offset = 0x0
     bool closeTheOtherBits();// public RVA = 0x9132E0
     void loadGame(MyGUI::Widget* _sender);// private RVA = 0x913650

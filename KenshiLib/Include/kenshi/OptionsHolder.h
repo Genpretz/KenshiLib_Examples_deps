@@ -7,8 +7,8 @@ class OptionsHolder
 {
 public:
     // no_addr void OptionsHolder(const class OptionsHolder & _a1);// public missing arg names
-    OptionsHolder();// public RVA = 0x3E83B0
-    OptionsHolder* _CONSTRUCTOR();// public RVA = 0x3E83B0
+    OptionsHolder();// public RVA = 0x3E7FD0
+    OptionsHolder* _CONSTRUCTOR();// public RVA = 0x3E7FD0
     float CAMERA_MOVE_SPEED; // 0x0 Member
     float CAMERA_PAN_SPEED; // 0x4 Member
     float CAMERA_TILT_SPEED; // 0x8 Member
@@ -29,7 +29,7 @@ public:
     bool fancyShaders; // 0x41 Member
     bool HWmouse; // 0x42 Member
     bool tutorials; // 0x43 Member
-    bool enabledCivilians();// public RVA = 0x569980
+    bool enabledCivilians();// public RVA = 0x569C90
     bool _enabledCivilians; // 0x44 Member
     float populationMult; // 0x48 Member
     float squadSizeMult; // 0x4C Member
@@ -42,7 +42,7 @@ public:
     float decalRange; // 0x68 Member
     int decalResolution; // 0x6C Member
     bool characterMultithreading; // 0x70 Member
-    bool characterMultithreadingEnabled();// public RVA = 0x785380
+    bool characterMultithreadingEnabled();// public RVA = 0x784CB0
     int limbLossFrequency; // 0x74 Member
     bool showNames; // 0x78 Member
     bool edgeScrolling; // 0x79 Member
@@ -60,8 +60,8 @@ public:
     float reflectionDistance; // 0xA4 Member
     // Typedef        : CompositorInfo
     lektor<std::pair<std::string, bool> > compositors; // 0xA8 Member
-    bool compositiorEnabled(const std::string& name) const;// public RVA = 0x3E7730
-    void loadCompositorSettings();// public RVA = 0x3EA670
+    bool compositiorEnabled(const std::string& name) const;// public RVA = 0x3E7350
+    void loadCompositorSettings();// public RVA = 0x3EA290
     float musicVolume; // 0xC0 Member
     float ambientVolume; // 0xC4 Member
     float footstepVolume; // 0xC8 Member
@@ -76,8 +76,8 @@ public:
     bool userSaves; // 0xE3 Member
     bool blood; // 0xE4 Member
     bool censorship; // 0xE5 Member
-    ~OptionsHolder();// public RVA = 0x8227B0
-    void _DESTRUCTOR();// public RVA = 0x8227B0
+    ~OptionsHolder();// public RVA = 0x8220F0
+    void _DESTRUCTOR();// public RVA = 0x8220F0
     // no_addr class OptionsHolder & operator=(const class OptionsHolder & _a1);// public missing arg names
     // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
 };

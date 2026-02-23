@@ -106,7 +106,7 @@ public:
     CameraClass* getCamera();// public RVA = 0x3E6B40
     void playerSetup(CameraClass* cam);// public RVA = 0x7F1460
     void clearAndReset();// public RVA = 0x7F9280
-    virtual void factoryObjectCreatedCallback(RootObject* building);// public RVA = 0x4D3190 vtable offset = 0x0
+    virtual void factoryObjectCreatedCallback(RootObject* building) override;// public RVA = 0x4D3190 vtable offset = 0x0
     void _NV_factoryObjectCreatedCallback(RootObject* building);// public RVA = 0x4D3190 vtable offset = 0x0
     void setFaction(Faction* f);// public RVA = 0x8012B0
     Faction* getFaction() const;// public RVA = 0x288FC0
