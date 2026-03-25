@@ -44,8 +44,9 @@ namespace KenshiLib
 		return AddHook((void*)target, detour, (void**)original);
 	}
 
-
+	// *********** DO NOT USE ***********
+	// BACKWARDS COMPATIBILITY WILL NOT BE MAINTAINED FOR INTERNAL FUNCTIONS
 #ifdef KENSHILIB_INTERNAL
-	void InitRVAs();
+	bool InitRVAs();
 #endif
 }

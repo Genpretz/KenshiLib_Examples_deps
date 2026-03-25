@@ -9,6 +9,7 @@
 #include <kenshi/InstanceID.h>
 #include <kenshi/Enums.h>
 #include <kenshi/PhysicsCollection.h>
+#include <kenshi/PhysicsActual.h>
 
 enum BuildingFunction
 {
@@ -77,37 +78,6 @@ enum BuildingClassType
     BCTYPE_LIGHT,
     BCTYPE_SHELL_WITH_INTERIOR,
     BCTYPE_FARM
-};
-
-// TODO move?
-enum CursorType
-{
-    DEFAULT_CURSOR,
-    MEDIC_CURSOR,
-    LOOT_CURSOR,
-    LIFT_CURSOR,
-    PICKUP_ITEM_CURSOR,
-    ATTACK_CURSOR,
-    GUARD_CURSOR,
-    TALK_CURSOR,
-    SPECIAL_TALK_CURSOR,
-    USE_CURSOR,
-    TRADER_CURSOR,
-    BUILD_CURSOR,
-    OPEN_DOOR_CURSOR,
-    DOOR_ESCAPE_CURSOR,
-    LOCKED_CURSOR,
-    PICK_LOCK_CURSOR,
-    BUY_HOUSE_CURSOR,
-    GREEN_CURSOR,
-    MINE_CURSOR,
-    REPAIR_CURSOR,
-    LIGHT_CURSOR,
-    STEAL_CURSOR,
-    HAND_CURSOR,
-    INVALID_MOVEMENT_CURSOR,
-    LOOT_CURSOR_RED,
-    KNOCKOUT_CURSOR
 };
 
 class DataPanelLine;
@@ -553,6 +523,19 @@ public:
     // virtual void * __vecDelDtor(unsigned int _a1) = 0;// protected vtable offset = 0x0 missing arg names
 };
 
+class BuildingPlacementGroundType
+{
+public:
+    enum Enum
+    {
+        ANY,
+        LAND,
+        WATER
+    };
+};
+
+class physHit; 
+
 class PreviewBuilding : public Ogre::GeneralAllocatedObject
 {
 public:
@@ -562,36 +545,36 @@ public:
     {
     public:
         // VTable         : (none)
-        // no_addr void Footprint(const class Footprint & _a1);// public missing arg names
-        Footprint::Footprint(PreviewBuilding* owner, Ogre::Entity* _ent, GameData* part);// public RVA = 0x4D8DB0
-        Footprint::Footprint* _CONSTRUCTOR(PreviewBuilding* owner, Ogre::Entity* _ent, GameData* part);// public RVA = 0x4D8DB0
-        Footprint::Footprint();// public RVA = 0x4D53A0
-        Footprint::Footprint* _CONSTRUCTOR();// public RVA = 0x4D53A0
-        Footprint::~Footprint();// public RVA = 0x4D3400
-        Footprint::~Footprint * _CONSTRUCTOR();// public RVA = 0x4D3400
-        virtual const Ogre::Aabb Footprint::getWorldAABB() const;// public RVA = 0x4F4A80 vtable offset = 0x0
-        const Ogre::Aabb _NV_PreviewBuilding_Footprint_getWorldAABB() const;// public RVA = 0x4F4A80 vtable offset = 0x0
-        virtual const Ogre::Aabb Footprint::getLocalAABB() const;// public RVA = 0x4F4AB0 vtable offset = 0x8
-        const Ogre::Aabb _NV_PreviewBuilding_Footprint_getLocalAABB() const;// public RVA = 0x4F4AB0 vtable offset = 0x8
-        float Footprint::getSpace() const;// public RVA = 0x4EB5F0
-        float Footprint::getMarker() const;// public RVA = 0x426B30
-        void Footprint::setValid(bool value);// public RVA = 0x4D33B0
-        bool Footprint::getValid() const;// public RVA = 0x4EB600
-        bool Footprint::validate();// public RVA = 0x4D1A60
-        bool Footprint::fakeOppositeValidate(float gap);// public RVA = 0x4D1C40
-        virtual bool Footprint::collisionTestOK(bool furniture, Building* indoors, const std::map<hand, Ogre::vector<UsageNode*>::type, std::less<hand>, Ogre::STLAllocator<std::pair<hand const, Ogre::vector<UsageNode*>::type >, Ogre::GeneralAllocPolicy > >* nearNodes);// public RVA = 0x4D4170 vtable offset = 0x10
-        bool _NV_PreviewBuilding_Footprint_collisionTestOK(bool furniture, Building* indoors, const std::map<hand, Ogre::vector<UsageNode*>::type, std::less<hand>, Ogre::STLAllocator<std::pair<hand const, Ogre::vector<UsageNode*>::type >, Ogre::GeneralAllocPolicy > >* nearNodes);// public RVA = 0x4D4170 vtable offset = 0x10
-        bool Footprint::collisionTestBuildings(bool isFurniture, Building* indoors, int currentFloor);// public RVA = 0x4D27C0
-        bool Footprint::collisionTestCharacters();// public RVA = 0x4D23C0
-        bool Footprint::validFloorTest();// public RVA = 0x4D0E10
-        bool Footprint::isIndoorsOK(bool isFurniture, Building** out, Town* t);// public RVA = 0x4D6240
-        bool Footprint::blocksAnyBuildingTest(const std::map<hand, Ogre::vector<UsageNode*>::type, std::less<hand>, Ogre::STLAllocator<std::pair<hand const, Ogre::vector<UsageNode*>::type >, Ogre::GeneralAllocPolicy > >& nearNodes);// public RVA = 0x4D4430
-        bool Footprint::isGroundValid() const;// public RVA = 0x4D0C50
+        // no_addr void Footprint(const class PreviewBuilding::Footprint & _a1);// public missing arg names
+        Footprint(PreviewBuilding* owner, Ogre::Entity* _ent, GameData* part);// public RVA = 0x4D8DB0
+        Footprint* _CONSTRUCTOR(PreviewBuilding* owner, Ogre::Entity* _ent, GameData* part);// public RVA = 0x4D8DB0
+        Footprint();// public RVA = 0x4D53A0
+        Footprint* _CONSTRUCTOR();// public RVA = 0x4D53A0
+        ~Footprint();// public RVA = 0x4D3400
+        void _DESTRUCTOR();// public RVA = 0x4D3400
+        virtual const Ogre::Aabb getWorldAABB() const;// public RVA = 0x4F4A80 vtable offset = 0x0
+        const Ogre::Aabb _NV_getWorldAABB() const;// public RVA = 0x4F4A80 vtable offset = 0x0
+        virtual const Ogre::Aabb getLocalAABB() const;// public RVA = 0x4F4AB0 vtable offset = 0x8
+        const Ogre::Aabb _NV_getLocalAABB() const;// public RVA = 0x4F4AB0 vtable offset = 0x8
+        float getSpace() const;// public RVA = 0x4EB5F0
+        float getMarker() const;// public RVA = 0x426B30
+        void setValid(bool value);// public RVA = 0x4D33B0
+        bool getValid() const;// public RVA = 0x4EB600
+        bool validate();// public RVA = 0x4D1A60
+        bool fakeOppositeValidate(float gap);// public RVA = 0x4D1C40
+        virtual bool collisionTestOK(bool furniture, Building* indoors, const std::map<hand, Ogre::vector<UsageNode*>::type, std::less<hand>, Ogre::STLAllocator<std::pair<hand const, Ogre::vector<UsageNode*>::type >, Ogre::GeneralAllocPolicy > >* nearNodes);// public RVA = 0x4D4170 vtable offset = 0x10
+        bool _NV_collisionTestOK(bool furniture, Building* indoors, const std::map<hand, Ogre::vector<UsageNode*>::type, std::less<hand>, Ogre::STLAllocator<std::pair<hand const, Ogre::vector<UsageNode*>::type >, Ogre::GeneralAllocPolicy > >* nearNodes);// public RVA = 0x4D4170 vtable offset = 0x10
+        bool collisionTestBuildings(bool isFurniture, Building* indoors, int currentFloor);// public RVA = 0x4D27C0
+        bool collisionTestCharacters();// public RVA = 0x4D23C0
+        bool validFloorTest();// public RVA = 0x4D0E10
+        bool isIndoorsOK(bool isFurniture, Building** out, Town* t);// public RVA = 0x4D6240
+        bool blocksAnyBuildingTest(const std::map<hand, Ogre::vector<UsageNode*>::type, std::less<hand>, Ogre::STLAllocator<std::pair<hand const, Ogre::vector<UsageNode*>::type >, Ogre::GeneralAllocPolicy > >& nearNodes);// public RVA = 0x4D4430
+        bool isGroundValid() const;// public RVA = 0x4D0C50
         bool wantsAboveGround; // 0x8 Member
-        Ogre::Vector3 Footprint::getWorldCorner(int corner) const;// protected RVA = 0x4D1620
-        virtual void Footprint::updateBox();// protected RVA = 0x4D16E0 vtable offset = 0x18
-        void _NV_PreviewBuilding_Footprint_updateBox();// protected RVA = 0x4D16E0 vtable offset = 0x18
-        float Footprint::getGroundHeight(const Ogre::Vector3& pos) const;// protected RVA = 0x4D1900
+        Ogre::Vector3 getWorldCorner(int corner) const;// protected RVA = 0x4D1620
+        virtual void updateBox();// protected RVA = 0x4D16E0 vtable offset = 0x18
+        void _NV_updateBox();// protected RVA = 0x4D16E0 vtable offset = 0x18
+        float getGroundHeight(const Ogre::Vector3& pos) const;// protected RVA = 0x4D1900
         float lower; // 0xC Member
         float space; // 0x10 Member
         float scale; // 0x14 Member
@@ -603,34 +586,34 @@ public:
         bool valid; // 0x7C Member
         PreviewBuilding* parent; // 0x80 Member
         Ogre::vector<Ogre::Vector3>::type corners; // 0x88 Member
-        Footprint& Footprint::operator=(const Footprint& __that);// public RVA = 0x4F4EB0
+        PreviewBuilding::Footprint& operator=(const PreviewBuilding::Footprint& __that);// public RVA = 0x4F4EB0
         // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
     };
-    class FootprintNode : public Footprint
+    class FootprintNode : public PreviewBuilding::Footprint
     {
     public:
-        // Footprint offset = 0x0, length = 0xA8
-        // no_addr void FootprintNode(const class FootprintNode & _a1);// public missing arg names
-        FootprintNode::FootprintNode(PreviewBuilding* owner, Ogre::Entity* ent, GameData* part, const std::string& nodeId);// public RVA = 0x4D9230
-        FootprintNode::FootprintNode* _CONSTRUCTOR(PreviewBuilding* owner, Ogre::Entity* ent, GameData* part, const std::string& nodeId);// public RVA = 0x4D9230
-        FootprintNode::FootprintNode();// public RVA = 0x4D5440
-        FootprintNode::FootprintNode* _CONSTRUCTOR();// public RVA = 0x4D5440
-        virtual const Ogre::Aabb FootprintNode::getWorldAABB() const;// public RVA = 0x4D0C70 vtable offset = 0x0
-        const Ogre::Aabb _NV_PreviewBuilding_FootprintNode_getWorldAABB() const;// public RVA = 0x4D0C70 vtable offset = 0x0
-        virtual const Ogre::Aabb FootprintNode::getLocalAABB() const;// public RVA = 0x4D0CB0 vtable offset = 0x0
-        const Ogre::Aabb _NV_PreviewBuilding_FootprintNode_getLocalAABB() const;// public RVA = 0x4D0CB0 vtable offset = 0x0
-        virtual void FootprintNode::updateBox();// public RVA = 0x4D1E50 vtable offset = 0x0
-        void _NV_PreviewBuilding_FootprintNode_updateBox();// public RVA = 0x4D1E50 vtable offset = 0x0
-        const std::string& FootprintNode::getNodeId() const;// public RVA = 0x4EB610
-        virtual bool FootprintNode::collisionTestOK(bool isFurniture, Building* indoors, const std::map<hand, Ogre::vector<UsageNode*>::type, std::less<hand>, Ogre::STLAllocator<std::pair<hand const, Ogre::vector<UsageNode*>::type >, Ogre::GeneralAllocPolicy > >* nearNodes);// public RVA = 0x4D3E20 vtable offset = 0x0
-        bool _NV_PreviewBuilding_FootprintNode_collisionTestOK(bool isFurniture, Building* indoors, const std::map<hand, Ogre::vector<UsageNode*>::type, std::less<hand>, Ogre::STLAllocator<std::pair<hand const, Ogre::vector<UsageNode*>::type >, Ogre::GeneralAllocPolicy > >* nearNodes);// public RVA = 0x4D3E20 vtable offset = 0x0
-        void FootprintNode::setEnabled(bool value);// public RVA = 0x4D0CF0
+        // PreviewBuilding::Footprint offset = 0x0, length = 0xA8
+        // no_addr void FootprintNode(const class PreviewBuilding::FootprintNode & _a1);// public missing arg names
+        FootprintNode(PreviewBuilding* owner, Ogre::Entity* ent, GameData* part, const std::string& nodeId);// public RVA = 0x4D9230
+        FootprintNode* _CONSTRUCTOR(PreviewBuilding* owner, Ogre::Entity* ent, GameData* part, const std::string& nodeId);// public RVA = 0x4D9230
+        FootprintNode();// public RVA = 0x4D5440
+        FootprintNode* _CONSTRUCTOR();// public RVA = 0x4D5440
+        virtual const Ogre::Aabb getWorldAABB() const override;// public RVA = 0x4D0C70 vtable offset = 0x0
+        const Ogre::Aabb _NV_getWorldAABB() const;// public RVA = 0x4D0C70 vtable offset = 0x0
+        virtual const Ogre::Aabb getLocalAABB() const override;// public RVA = 0x4D0CB0 vtable offset = 0x0
+        const Ogre::Aabb _NV_getLocalAABB() const;// public RVA = 0x4D0CB0 vtable offset = 0x0
+        virtual void updateBox() override;// public RVA = 0x4D1E50 vtable offset = 0x0
+        void _NV_updateBox();// public RVA = 0x4D1E50 vtable offset = 0x0
+        const std::string& getNodeId() const;// public RVA = 0x4EB610
+        virtual bool collisionTestOK(bool isFurniture, Building* indoors, const std::map<hand, Ogre::vector<UsageNode*>::type, std::less<hand>, Ogre::STLAllocator<std::pair<hand const, Ogre::vector<UsageNode*>::type >, Ogre::GeneralAllocPolicy > >* nearNodes) override;// public RVA = 0x4D3E20 vtable offset = 0x0
+        bool _NV_collisionTestOK(bool isFurniture, Building* indoors, const std::map<hand, Ogre::vector<UsageNode*>::type, std::less<hand>, Ogre::STLAllocator<std::pair<hand const, Ogre::vector<UsageNode*>::type >, Ogre::GeneralAllocPolicy > >* nearNodes);// public RVA = 0x4D3E20 vtable offset = 0x0
+        void setEnabled(bool value);// public RVA = 0x4D0CF0
         Ogre::Aabb aabb; // 0xA8 Member
         std::string nodeId; // 0xC0 Member
         bool enabled; // 0xE8 Member
-        FootprintNode::~FootprintNode();// public RVA = 0x4F4AE0
-        FootprintNode::~FootprintNode * _CONSTRUCTOR();// public RVA = 0x4F4AE0
-        FootprintNode& FootprintNode::operator=(const FootprintNode& __that);// public RVA = 0x4F5060
+        ~FootprintNode();// public RVA = 0x4F4AE0
+        void _DESTRUCTOR();// public RVA = 0x4F4AE0
+        PreviewBuilding::FootprintNode& operator=(const PreviewBuilding::FootprintNode& __that);// public RVA = 0x4F5060
         // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
     };
     enum PlacementResult
@@ -646,35 +629,36 @@ public:
         PREVIEW_WALL
     };
 
-    const std::string& getPlacementResultMaterialName(PlacementResult result);// public RVA = 0x4D32A0
+    static const std::string& getPlacementResultMaterialName(PreviewBuilding::PlacementResult result);// public RVA = 0x4D32A0
     // no_addr void PreviewBuilding(const class PreviewBuilding & _a1);// public missing arg names
     PreviewBuilding(GameData* data, Building* _furnitureParent);// public RVA = 0x4DE440
     PreviewBuilding* _CONSTRUCTOR(GameData* data, Building* _furnitureParent);// public RVA = 0x4DE440
-    virtual ~PreviewBuilding();// public RVA = 0x4D54C0 vtable offset = 0x0;
-    virtual PreviewBuildingClassType type() const;// public RVA = 0x4F7950 vtable offset = 0x8
-    PreviewBuildingClassType _NV_PreviewBuilding_type() const;// public RVA = 0x4F7950 vtable offset = 0x8
+    virtual ~PreviewBuilding();// public RVA = 0x4D54C0 vtable offset = 0x0
+    void _DESTRUCTOR();// public RVA = 0x4D54C0 vtable offset = 0x0
+    virtual PreviewBuilding::PreviewBuildingClassType type() const;// public RVA = 0x4F7950 vtable offset = 0x8
+    PreviewBuilding::PreviewBuildingClassType _NV_type() const;// public RVA = 0x4F7950 vtable offset = 0x8
     virtual bool checkProspectingIsNotZero();// public RVA = 0x4D1040 vtable offset = 0x10
-    bool _NV_PreviewBuilding_checkProspectingIsNotZero();// public RVA = 0x4D1040 vtable offset = 0x10
+    bool _NV_checkProspectingIsNotZero();// public RVA = 0x4D1040 vtable offset = 0x10
     virtual bool isASnapToBuilding();// public RVA = 0x42D700 vtable offset = 0x18
-    bool _NV_PreviewBuilding_isASnapToBuilding();// public RVA = 0x42D700 vtable offset = 0x18
+    bool _NV_isASnapToBuilding();// public RVA = 0x42D700 vtable offset = 0x18
     virtual bool isACeilingBuilding();// public RVA = 0x42D710 vtable offset = 0x20
-    bool _NV_PreviewBuilding_isACeilingBuilding();// public RVA = 0x42D710 vtable offset = 0x20
+    bool _NV_isACeilingBuilding();// public RVA = 0x42D710 vtable offset = 0x20
     virtual bool snappingOk();// public RVA = 0x42D720 vtable offset = 0x28
-    bool _NV_PreviewBuilding_snappingOk();// public RVA = 0x42D720 vtable offset = 0x28
+    bool _NV_snappingOk();// public RVA = 0x42D720 vtable offset = 0x28
     virtual bool isInteriorBuilding();// public RVA = 0x42D810 vtable offset = 0x30
-    bool _NV_PreviewBuilding_isInteriorBuilding();// public RVA = 0x42D810 vtable offset = 0x30
+    bool _NV_isInteriorBuilding();// public RVA = 0x42D810 vtable offset = 0x30
     bool isCurrent() const;// public RVA = 0x4F6300
     virtual bool setup();// public RVA = 0x4DD6B0 vtable offset = 0x38
-    bool _NV_PreviewBuilding_setup();// public RVA = 0x4DD6B0 vtable offset = 0x38
+    bool _NV_setup();// public RVA = 0x4DD6B0 vtable offset = 0x38
     virtual void _destroyEnts();// public RVA = 0x4D2D20 vtable offset = 0x40
-    void _NV_PreviewBuilding__destroyEnts();// public RVA = 0x4D2D20 vtable offset = 0x40
+    void _NV__destroyEnts();// public RVA = 0x4D2D20 vtable offset = 0x40
     virtual void update();// public RVA = 0x4D0FE0 vtable offset = 0x48
-    void _NV_PreviewBuilding_update();// public RVA = 0x4D0FE0 vtable offset = 0x48
+    void _NV_update();// public RVA = 0x4D0FE0 vtable offset = 0x48
     virtual void buildingPlacementUpdate(physHit& hit, bool& mRightUp, bool& mLeftUp);// public RVA = 0x4D4CA0 vtable offset = 0x50
-    void _NV_PreviewBuilding_buildingPlacementUpdate(physHit& hit, bool& mRightUp, bool& mLeftUp);// public RVA = 0x4D4CA0 vtable offset = 0x50
+    void _NV_buildingPlacementUpdate(physHit& hit, bool& mRightUp, bool& mLeftUp);// public RVA = 0x4D4CA0 vtable offset = 0x50
     void figureOutWhichTown();// public RVA = 0x4D6610
     virtual void setVisualPosition(const Ogre::Vector3& position);// public RVA = 0x4D9720 vtable offset = 0x58
-    void _NV_PreviewBuilding_setVisualPosition(const Ogre::Vector3& position);// public RVA = 0x4D9720 vtable offset = 0x58
+    void _NV_setVisualPosition(const Ogre::Vector3& position);// public RVA = 0x4D9720 vtable offset = 0x58
     void yawBy(float pan);// public RVA = 0x4D4800
     void yawSet(float pan);// public RVA = 0x4D4880
     void rotateBy(const Ogre::Quaternion& by);// public RVA = 0x4D4900
@@ -686,21 +670,21 @@ public:
     bool updateFootprintHeights();// public RVA = 0x4D9480
     // no_addr bool rootPointOK();// public
     virtual bool isCollisionOK();// public RVA = 0x4D0E70 vtable offset = 0x60
-    bool _NV_PreviewBuilding_isCollisionOK();// public RVA = 0x4D0E70 vtable offset = 0x60
+    bool _NV_isCollisionOK();// public RVA = 0x4D0E70 vtable offset = 0x60
     virtual bool isFloorOk();// public RVA = 0x4D0E80 vtable offset = 0x68
-    bool _NV_PreviewBuilding_isFloorOk();// public RVA = 0x4D0E80 vtable offset = 0x68
+    bool _NV_isFloorOk();// public RVA = 0x4D0E80 vtable offset = 0x68
     virtual bool isIndoorsOk();// public RVA = 0x4D0E90 vtable offset = 0x70
-    bool _NV_PreviewBuilding_isIndoorsOk();// public RVA = 0x4D0E90 vtable offset = 0x70
+    bool _NV_isIndoorsOk();// public RVA = 0x4D0E90 vtable offset = 0x70
     virtual bool isNodesOk();// public RVA = 0x4D0EA0 vtable offset = 0x78
-    bool _NV_PreviewBuilding_isNodesOk();// public RVA = 0x4D0EA0 vtable offset = 0x78
+    bool _NV_isNodesOk();// public RVA = 0x4D0EA0 vtable offset = 0x78
     virtual bool isBlockingBuildingsNodes();// public RVA = 0x4D0EB0 vtable offset = 0x80
-    bool _NV_PreviewBuilding_isBlockingBuildingsNodes();// public RVA = 0x4D0EB0 vtable offset = 0x80
+    bool _NV_isBlockingBuildingsNodes();// public RVA = 0x4D0EB0 vtable offset = 0x80
     virtual bool isGoodAboveAndBelow();// public RVA = 0x4D0EC0 vtable offset = 0x88
-    bool _NV_PreviewBuilding_isGoodAboveAndBelow();// public RVA = 0x4D0EC0 vtable offset = 0x88
+    bool _NV_isGoodAboveAndBelow();// public RVA = 0x4D0EC0 vtable offset = 0x88
     virtual bool isOnValidGround() const;// public RVA = 0x4D0EF0 vtable offset = 0x90
-    bool _NV_PreviewBuilding_isOnValidGround() const;// public RVA = 0x4D0EF0 vtable offset = 0x90
+    bool _NV_isOnValidGround() const;// public RVA = 0x4D0EF0 vtable offset = 0x90
     virtual bool isLinked() const;// public RVA = 0x4F7960 vtable offset = 0x98
-    bool _NV_PreviewBuilding_isLinked() const;// public RVA = 0x4F7960 vtable offset = 0x98
+    bool _NV_isLinked() const;// public RVA = 0x4F7960 vtable offset = 0x98
     void moveHeightOffset(float h);// public RVA = 0x4D1050
     void resetHeightOffset();// public RVA = 0x4D10A0
     float getFootprintShift() const;// public RVA = 0x4D0F00
@@ -710,30 +694,30 @@ public:
     const Ogre::Vector3& getCentreOffset() const;// public RVA = 0x4EB620
     int getFloor() const;// public RVA = 0x4EB630
     virtual void setStartPosition(const Ogre::Vector3& p);// public RVA = 0x4F7970 vtable offset = 0xA0
-    void _NV_PreviewBuilding_setStartPosition(const Ogre::Vector3& p);// public RVA = 0x4F7970 vtable offset = 0xA0
+    void _NV_setStartPosition(const Ogre::Vector3& p);// public RVA = 0x4F7970 vtable offset = 0xA0
     virtual void setEndPosition(Ogre::Vector3 position);// public RVA = 0x4D0FF0 vtable offset = 0xA8
-    void _NV_PreviewBuilding_setEndPosition(Ogre::Vector3 position);// public RVA = 0x4D0FF0 vtable offset = 0xA8
+    void _NV_setEndPosition(Ogre::Vector3 position);// public RVA = 0x4D0FF0 vtable offset = 0xA8
     virtual Ogre::Vector3 getEndPos() const;// public RVA = 0x42D730 vtable offset = 0xB0
-    Ogre::Vector3 _NV_PreviewBuilding_getEndPos() const;// public RVA = 0x42D730 vtable offset = 0xB0
+    Ogre::Vector3 _NV_getEndPos() const;// public RVA = 0x42D730 vtable offset = 0xB0
     virtual void clearPointersTo(PreviewBuilding* _a1);// public RVA = 0x42D760 vtable offset = 0xB8 missing arg names
-    void _NV_PreviewBuilding_clearPointersTo(PreviewBuilding* _a1);// public RVA = 0x42D760 vtable offset = 0xB8 missing arg names
+    void _NV_clearPointersTo(PreviewBuilding* _a1);// public RVA = 0x42D760 vtable offset = 0xB8 missing arg names
     virtual void placeFinalPreviewBuilding();// public RVA = 0x4D49B0 vtable offset = 0xC0
-    void _NV_PreviewBuilding_placeFinalPreviewBuilding();// public RVA = 0x4D49B0 vtable offset = 0xC0
+    void _NV_placeFinalPreviewBuilding();// public RVA = 0x4D49B0 vtable offset = 0xC0
     Building* insideBuilding() const;// public RVA = 0x4D10C0
     virtual bool placementVerification();// public RVA = 0x4DCAC0 vtable offset = 0xC8
-    bool _NV_PreviewBuilding_placementVerification();// public RVA = 0x4DCAC0 vtable offset = 0xC8
+    bool _NV_placementVerification();// public RVA = 0x4DCAC0 vtable offset = 0xC8
     const Ogre::Aabb& getWorldAABB() const;// public RVA = 0x4EB640
-    virtual bool isNoCollideWithThisBuilding(PreviewBuilding* what);// public RVA = 0x4D0E00 vtable offset = 0xD0
-    bool _NV_PreviewBuilding_isNoCollideWithThisBuilding(PreviewBuilding* what);// public RVA = 0x4D0E00 vtable offset = 0xD0
     virtual bool isNoCollideWithThisBuilding(RootObject* what, NxShape* shape, bool node);// public RVA = 0x4D0D20 vtable offset = 0xD8
-    bool _NV_PreviewBuilding_isNoCollideWithThisBuilding(RootObject* what, NxShape* shape, bool node);// public RVA = 0x4D0D20 vtable offset = 0xD8
+    bool _NV_isNoCollideWithThisBuilding(RootObject* what, NxShape* shape, bool node);// public RVA = 0x4D0D20 vtable offset = 0xD8
+    virtual bool isNoCollideWithThisBuilding(PreviewBuilding* what);// public RVA = 0x4D0E00 vtable offset = 0xD0
+    bool _NV_isNoCollideWithThisBuilding(PreviewBuilding* what);// public RVA = 0x4D0E00 vtable offset = 0xD0
     GameData* getGameData();// public RVA = 0x426B90
     virtual bool noAltitude();// public RVA = 0x42D770 vtable offset = 0xE0
-    bool _NV_PreviewBuilding_noAltitude();// public RVA = 0x42D770 vtable offset = 0xE0
+    bool _NV_noAltitude();// public RVA = 0x42D770 vtable offset = 0xE0
     virtual bool noPathfindingNeeded();// public RVA = 0x42D9C0 vtable offset = 0xE8
-    bool _NV_PreviewBuilding_noPathfindingNeeded();// public RVA = 0x42D9C0 vtable offset = 0xE8
+    bool _NV_noPathfindingNeeded();// public RVA = 0x42D9C0 vtable offset = 0xE8
     virtual void placePreview(const Ogre::Vector3& position, const Ogre::Quaternion& rotation, int floorNumber);// public RVA = 0x4D1FF0 vtable offset = 0xF0
-    void _NV_PreviewBuilding_placePreview(const Ogre::Vector3& position, const Ogre::Quaternion& rotation, int floorNumber);// public RVA = 0x4D1FF0 vtable offset = 0xF0
+    void _NV_placePreview(const Ogre::Vector3& position, const Ogre::Quaternion& rotation, int floorNumber);// public RVA = 0x4D1FF0 vtable offset = 0xF0
     void resetUseageNodes();// public RVA = 0x4D3470
     Ogre::SceneNode* parentNode; // 0x8 Member
     Ogre::vector<Ogre::Entity*>::type entitiesList; // 0x10 Member
@@ -741,10 +725,10 @@ public:
     bool isCurrentlySnapped; // 0x48 Member
     Building* snappedTo; // 0x50 Member
     virtual void calculateRotationsAndStuff(const Ogre::Vector3& position);// protected RVA = 0x4DA2A0 vtable offset = 0xF8
-    void _NV_PreviewBuilding_calculateRotationsAndStuff(const Ogre::Vector3& position);// protected RVA = 0x4DA2A0 vtable offset = 0xF8
+    void _NV_calculateRotationsAndStuff(const Ogre::Vector3& position);// protected RVA = 0x4DA2A0 vtable offset = 0xF8
     bool placementVerification_recurse();// protected RVA = 0x4DB2C0
     virtual float getTerrainHeightAtCenter();// protected RVA = 0x4D1000 vtable offset = 0x100
-    float _NV_PreviewBuilding_getTerrainHeightAtCenter();// protected RVA = 0x4D1000 vtable offset = 0x100
+    float _NV_getTerrainHeightAtCenter();// protected RVA = 0x4D1000 vtable offset = 0x100
     void recalculateWorldAABB();// protected RVA = 0x4D3550
     void validateUsageNodes();// protected RVA = 0x4D3940
     lektor<FootprintNode> usageNodes; // 0x58 Member

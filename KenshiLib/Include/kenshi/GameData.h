@@ -203,3 +203,17 @@ public:
     GameDataReference& operator=(const GameDataReference& __that);// public RVA = 0xA2370
     // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
 };
+
+class GameDataCopyStandalone : public GameData
+{
+public:
+    // GameData offset = 0x0, length = 0x300
+    // no_addr void GameDataCopyStandalone(const class GameDataCopyStandalone & _a1);// public missing arg names
+    GameDataCopyStandalone();// public RVA = 0xB65C0
+    GameDataCopyStandalone* _CONSTRUCTOR();// public RVA = 0xB65C0
+    virtual ~GameDataCopyStandalone();// public RVA = 0xB65F0 vtable offset = 0x0
+    void _DESTRUCTOR();// public RVA = 0xB65F0 vtable offset = 0x0
+    // no_addr class GameDataCopyStandalone & operator=(const class GameDataCopyStandalone & _a1);// public missing arg names
+    // no_addr void __local_vftable_ctor_closure();// public
+    // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
+};

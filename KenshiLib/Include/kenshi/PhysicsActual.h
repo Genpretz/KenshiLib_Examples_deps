@@ -285,7 +285,7 @@ public:
     NxVec3* _CONSTRUCTOR(float _x, float _y, float _z);// public RVA = 0x1A6D00
     NxVec3(float a);// public RVA = 0x7E7BA0
     NxVec3* _CONSTRUCTOR(float a);// public RVA = 0x7E7BA0
-    NxVec3() {};// public RVA = 0x1AA820
+    NxVec3();// public RVA = 0x1AA820
     NxVec3* _CONSTRUCTOR();// public RVA = 0x1AA820
     // no_addr const class NxVec3 & operator=(const struct _Nx3F32 & _a1);// public missing arg names
     const NxVec3& operator=(const NxVec3& v);// public RVA = 0x1AA830
@@ -349,6 +349,152 @@ public:
     float x; // 0x0 Member
     float y; // 0x4 Member
     float z; // 0x8 Member
+};
+
+class NxQuat;
+
+class Nx9Real
+{
+public:
+    struct S
+    {
+        float _11; // 0x0 Member
+        float _12; // 0x4 Member
+        float _13; // 0x8 Member
+        float _21; // 0xC Member
+        float _22; // 0x10 Member
+        float _23; // 0x14 Member
+        float _31; // 0x18 Member
+        float _32; // 0x1C Member
+        float _33; // 0x20 Member
+    };
+    S s; // 0x0 Member
+    float m[0x3][0x3]; // 0x0 Member
+};
+
+class NxMat33
+{
+public:
+    NxMat33(const NxQuat& q);// public RVA = 0x1C0B70
+    NxMat33* _CONSTRUCTOR(const NxQuat& q);// public RVA = 0x1C0B70
+    NxMat33(const NxMat33& a);// public RVA = 0x1AA900
+    NxMat33* _CONSTRUCTOR(const NxMat33& a);// public RVA = 0x1AA900
+    // no_addr void NxMat33(const class NxVec3 & _a1, const class NxVec3 & _a2, const class NxVec3 & _a3);// public missing arg names
+    // no_addr void NxMat33(enum NxMatrixType _a1);// public missing arg names
+    NxMat33();// public RVA = 0x1AA8F0
+    NxMat33* _CONSTRUCTOR();// public RVA = 0x1AA8F0
+    ~NxMat33();// public RVA = 0x1A6D20
+    void _DESTRUCTOR();// public RVA = 0x1A6D20
+    const NxMat33& operator=(const NxMat33& a);// public RVA = 0x1AA950
+    // no_addr void setRowMajor(const double[0x3] * _a1);// public missing arg names
+    // no_addr void setRowMajor(const double * _a1);// public missing arg names
+    // no_addr void setRowMajor(const float[0x3] * _a1);// public missing arg names
+    void setRowMajor(const float* d);// public RVA = 0x1BE830
+    // no_addr void setColumnMajor(const double[0x3] * _a1);// public missing arg names
+    // no_addr void setColumnMajor(const double * _a1);// public missing arg names
+    // no_addr void setColumnMajor(const float[0x3] * _a1);// public missing arg names
+    // no_addr void setColumnMajor(const float * _a1);// public missing arg names
+    // no_addr void getRowMajor(double[0x3] * _a1);// public missing arg names
+    // no_addr void getRowMajor(double * _a1);// public missing arg names
+    // no_addr void getRowMajor(float[0x3] * _a1);// public missing arg names
+    void getRowMajor(float* d) const;// public RVA = 0x245610
+    // no_addr void getColumnMajor(double[0x3] * _a1);// public missing arg names
+    // no_addr void getColumnMajor(double * _a1);// public missing arg names
+    // no_addr void getColumnMajor(float[0x3] * _a1);// public missing arg names
+    void getColumnMajor(float* d) const;// public RVA = 0x23DE10
+    // no_addr void setRowMajorStride4(const double[0x4] * _a1);// public missing arg names
+    // no_addr void setRowMajorStride4(const double * _a1);// public missing arg names
+    // no_addr void setRowMajorStride4(const float[0x4] * _a1);// public missing arg names
+    void setRowMajorStride4(const float* d);// public RVA = 0x245660
+    // no_addr void setColumnMajorStride4(const double[0x4] * _a1);// public missing arg names
+    // no_addr void setColumnMajorStride4(const double * _a1);// public missing arg names
+    // no_addr void setColumnMajorStride4(const float[0x4] * _a1);// public missing arg names
+    // no_addr void setColumnMajorStride4(const float * _a1);// public missing arg names
+    // no_addr void getRowMajorStride4(double[0x4] * _a1);// public missing arg names
+    // no_addr void getRowMajorStride4(double * _a1);// public missing arg names
+    // no_addr void getRowMajorStride4(float[0x4] * _a1);// public missing arg names
+    void getRowMajorStride4(float* d) const;// public RVA = 0x2456B0
+    // no_addr void getColumnMajorStride4(double[0x4] * _a1);// public missing arg names
+    // no_addr void getColumnMajorStride4(double * _a1);// public missing arg names
+    // no_addr void getColumnMajorStride4(float[0x4] * _a1);// public missing arg names
+    void getColumnMajorStride4(float* d) const;// public RVA = 0x23DE60
+    // no_addr void setRow(int _a1, const class NxVec3 & _a2);// public missing arg names
+    void setColumn(int col, const NxVec3& v);// public RVA = 0x1AA9A0
+    NxVec3 getRow(int row) const;// public RVA = 0x1A6D30
+    // no_addr void getRow(int _a1, class NxVec3 & _a2);// public missing arg names
+    NxVec3 getColumn(int col) const;// public RVA = 0x2A9D70
+    void getColumn(int col, NxVec3& v) const;// public RVA = 0x1BE880
+    const float& operator()(int row, int col) const;// public RVA = 0x1B5BB0
+    // no_addr float & operator()(int _a1, int _a2);// public missing arg names
+    // no_addr bool isIdentity();// public
+    // no_addr bool isZero();// public
+    bool isFinite() const;// public RVA = 0x1AA9D0
+    void zero();// public RVA = 0x1F7B90
+    void id();// public RVA = 0x1AAAF0
+    // no_addr void setNegative();// public
+    // no_addr void diagonal(const class NxVec3 & _a1);// public missing arg names
+    // no_addr void star(const class NxVec3 & _a1);// public missing arg names
+    void fromQuat(const NxQuat& q);// public RVA = 0x1BE8B0
+    void toQuat(NxQuat& q) const;// public RVA = 0x1B5BD0
+    // no_addr const class NxMat33 & operator+=(const class NxMat33 & _a1);// public missing arg names
+    // no_addr const class NxMat33 & operator-=(const class NxMat33 & _a1);// public missing arg names
+    NxMat33& operator*=(const NxMat33& mat);// public RVA = 0x1BEE40
+    // no_addr const class NxMat33 & operator*=(float _a1);// public missing arg names
+    // no_addr const class NxMat33 & operator/=(float _a1);// public missing arg names
+    // no_addr float determinant();// public
+    // no_addr bool getInverse(class NxMat33 & _a1);// public missing arg names
+    // no_addr void setTransposed();// public
+    // no_addr void setTransposed(const class NxMat33 & _a1);// public missing arg names
+    // no_addr void multiplyDiagonal(const class NxVec3 & _a1, class NxMat33 & _a2);// public missing arg names
+    // no_addr void multiplyDiagonal(const class NxVec3 & _a1);// public missing arg names
+    // no_addr void multiplyDiagonalTranspose(const class NxVec3 & _a1, class NxMat33 & _a2);// public missing arg names
+    // no_addr void multiplyDiagonalTranspose(const class NxVec3 & _a1);// public missing arg names
+    void multiply(const NxMat33& left, const NxMat33& right);// public RVA = 0x1BEB10
+    // no_addr void multiply(float _a1, const class NxMat33 & _a2);// public missing arg names
+    void multiply(const NxVec3& src, NxVec3& dst) const;// public RVA = 0x1BEA60
+    // no_addr void multiplyByTranspose(const class NxVec3 & _a1, class NxVec3 & _a2);// public missing arg names
+    // no_addr void add(const class NxMat33 & _a1, const class NxMat33 & _a2);// public missing arg names
+    // no_addr void subtract(const class NxMat33 & _a1, const class NxMat33 & _a2);// public missing arg names
+    // no_addr void multiplyTransposeLeft(const class NxMat33 & _a1, const class NxMat33 & _a2);// public missing arg names
+    // no_addr void multiplyTransposeRight(const class NxVec3 & _a1, const class NxVec3 & _a2);// public missing arg names
+    // no_addr void multiplyTransposeRight(const class NxMat33 & _a1, const class NxMat33 & _a2);// public missing arg names
+    // no_addr void rotX(float _a1);// public missing arg names
+    // no_addr void rotY(float _a1);// public missing arg names
+    // no_addr void rotZ(float _a1);// public missing arg names
+    // no_addr bool isNormalized();// public
+    // no_addr bool isOrthogonal();// public
+    // no_addr bool isRotation();// public
+    // no_addr class NxVec3 operator%(const class NxVec3 & _a1);// public missing arg names
+    // no_addr class NxMat33 operator*(float _a1);// public missing arg names
+    // no_addr class NxMat33 operator*(const class NxMat33 & _a1);// public missing arg names
+    NxVec3 operator*(const NxVec3& src) const;// public RVA = 0x1BED90
+    // no_addr class NxMat33 operator-(const class NxMat33 & _a1);// public missing arg names
+    // no_addr class NxMat33 operator+(const class NxMat33 & _a1);// public missing arg names
+    Nx9Real data; // 0x0 Member
+    // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
+};
+
+class NxBox
+{
+public:
+    // no_addr void NxBox(const class NxBox & _a1);// public missing arg names
+    NxBox(const NxVec3& _center, const NxVec3& _extents, const NxMat33& _rot);// public RVA = 0x788D00
+    NxBox* _CONSTRUCTOR(const NxVec3& _center, const NxVec3& _extents, const NxMat33& _rot);// public RVA = 0x788D00
+    NxBox();// public RVA = 0x38EE50
+    NxBox* _CONSTRUCTOR();// public RVA = 0x38EE50
+    ~NxBox();// public RVA = 0x38EE60
+    void _DESTRUCTOR();// public RVA = 0x38EE60
+    // no_addr void setEmpty();// public
+    // no_addr void rotate(const class NxMat34 & _a1, class NxBox & _a2);// public missing arg names
+    // no_addr bool isValid();// public
+    // no_addr const class NxVec3 & GetCenter();// public
+    // no_addr const class NxVec3 & GetExtents();// public
+    // no_addr const class NxMat33 & GetRot();// public
+    NxVec3 center; // 0x0 Member
+    NxVec3 extents; // 0xC Member
+    NxMat33 rot; // 0x18 Member
+    NxBox& operator=(const NxBox& __that);// public RVA = 0x4EC1B0
+    // no_addr void * __vecDelDtor(unsigned int _a1);// public missing arg names
 };
 
 namespace NXU

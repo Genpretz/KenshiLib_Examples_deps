@@ -8,6 +8,7 @@
 #include "FitnessSelector.h"
 
 #include <mygui/MyGUI_Widget.h>
+#include <mygui/common/baselayout/BaseLayout.h>
 #include <boost/unordered_set.hpp>
 #include <ogre/OgreMemoryAllocatorConfig.h>
 
@@ -89,36 +90,6 @@ enum DialogActionEnum
     DA_ATTACK_IF_NO_COEXIST,
     DA_KNOCKOUT,
     DA_END
-};
-
-// TODO move?
-namespace wraps
-{
-    class BaseLayout
-    {
-    public:
-        // VTable         : (none)
-        // no_addr void BaseLayout(const class wraps::BaseLayout & _a1);// public missing arg names
-        BaseLayout(const std::string& _layout, MyGUI::Widget* _parent);// protected RVA = 0x11F2A0
-        BaseLayout* _CONSTRUCTOR(const std::string& _layout, MyGUI::Widget* _parent);// protected RVA = 0x11F2A0
-        // no_addr void BaseLayout();// protected
-        void initialise(const std::string& _layout, MyGUI::Widget* _parent, bool _throw, bool _createFakeWidgets);// protected RVA = 0x119010
-        void shutdown();// protected RVA = 0x115E00
-        std::string FindParentPrefix(MyGUI::Widget* _parent);// private RVA = 0x116EB0
-        void snapToParent(MyGUI::Widget* _child);// private RVA = 0x115F20
-        MyGUI::Widget* _createFakeWidgetT(const std::string& _typeName, MyGUI::Widget* _parent);// private RVA = 0x116130
-        virtual ~BaseLayout();// public RVA = 0x116390 vtable offset = 0x0
-        void _DESTRUCTOR();// public RVA = 0x116390 vtable offset = 0x0
-        MyGUI::Widget* mMainWidget; // 0x8 Member
-        std::string mPrefix; // 0x10 Member
-        std::string mLayoutName; // 0x38 Member
-        std::vector<MyGUI::Widget*> mListWindowRoot; // 0x60 Member
-        // Typedef        : VectorBasePtr
-        std::vector<BaseLayout*> mListBase; // 0x80 Member
-        // no_addr class wraps::BaseLayout & operator=(const class wraps::BaseLayout & _a1);// public missing arg names
-        // no_addr void __local_vftable_ctor_closure();// public
-        // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
-    };
 };
 
 class DialogueSpeechBubble : public wraps::BaseLayout, public Ogre::GeneralAllocatedObject
