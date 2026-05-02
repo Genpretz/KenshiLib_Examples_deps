@@ -42,6 +42,10 @@ Write-Output "KENSHILIB_DEPS_DIR $([Environment]::GetEnvironmentVariable("KENSHI
 
 setx BOOST_INCLUDE_PATH $(Join-Path -Path $Loc -ChildPath "boost_1_60_0") #| Out-Null
 Write-Output "BOOST_INCLUDE_PATH $([Environment]::GetEnvironmentVariable("BOOST_INCLUDE_PATH", "User"))"
+
+setx BOOST_ROOT $(Join-Path -Path $Loc -ChildPath "boost_1_60_0") #| Out-Null
+Write-Output "BOOST_INCLUDE_PATH $([Environment]::GetEnvironmentVariable("BOOST_ROOT", "User"))"
+
 'press any key to exit'
 [Console]::ReadKey() | Out-Null
 exit
