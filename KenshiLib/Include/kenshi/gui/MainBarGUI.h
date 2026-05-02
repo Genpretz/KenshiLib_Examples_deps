@@ -4,53 +4,7 @@
 #include <mygui/common/baselayout/BaseLayout.h>
 #include <boost/unordered_map.hpp>
 #include <kenshi/util/OgreUnordered.h>
-
-// TODO move?
-class PortraitData : public Ogre::GeneralAllocatedObject
-{
-public:
-    // Ogre::AllocatedObject<Ogre::CategorisedAllocPolicy<0> > offset = 0x0, length = 0x1
-    enum State
-    {
-        NORMAL,
-        SELECTED,
-        HURT,
-        DOWN = 0x4,
-        COMBAT = 0x8,
-        SLAVE = 0x10,
-        PRISON = 0x20,
-        EATEN = 0x40,
-        HUNGER = 0x80
-    };
-
-    Character* getCharacter() const;// public RVA = 0x412610
-    const hand& getHandle() const;// public RVA = 0x411990
-    bool update();// public RVA = 0x414640
-    void forceUpdate();// public RVA = 0x411A00
-    std::string name; // 0x0 Member
-    char flashing; // 0x28 Member
-    PortraitData::State state; // 0x2C Member
-    bool reloadPortrait; // 0x30 Member
-    bool isSelected() const;// public RVA = 0x4119A0
-    // no_addr bool isHurt();// public
-    bool isDown() const;// public RVA = 0x4119B0
-    // no_addr bool isInCombat();// public
-    // no_addr bool isSlave();// public
-    // no_addr bool isInPrison();// public
-    // no_addr bool isHungry();// public
-    std::string getBackgroundImageName() const;// public RVA = 0x412260
-    std::string getBackOverlayImageName() const;// public RVA = 0x4122C0
-    std::string getFrontOverlayImageName() const;// public RVA = 0x412350
-    // no_addr void PortraitData(const class PortraitData & _a1);// public missing arg names
-    PortraitData(const hand& characterHandle);// private RVA = 0x411F00
-    PortraitData* _CONSTRUCTOR(const hand& characterHandle);// private RVA = 0x411F00
-    ~PortraitData();// private RVA = 0x411F70
-    void _DESTRUCTOR();// private RVA = 0x411F70
-    hand characterHandle; // 0x38 Member
-    bool updateRequested; // 0x58 Member
-    // no_addr class PortraitData & operator=(const class PortraitData & _a1);// public missing arg names
-    // no_addr void * __vecDelDtor(unsigned int _a1);// private missing arg names
-};
+#include "SquadManagementScreen.h"
 
 class RootObjectContainer;
 class MedicalDatapanel;
@@ -58,7 +12,6 @@ class ToolTip;
 class DatapanelGUI;
 class PortraitMainItemBox;
 class DatapanelGUI;
-class MainBarGUI;
 
 // TODO move?
 class MainTabPortraitPlatoon : public Ogre::GeneralAllocatedObject

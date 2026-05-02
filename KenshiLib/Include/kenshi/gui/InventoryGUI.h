@@ -254,3 +254,38 @@ public:
     // no_addr class InventoryLayout & operator=(const class InventoryLayout & _a1);// public missing arg names
     // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
 };
+
+// TODO move?
+class GenericFixedInventoryLayout : public InventoryLayout
+{
+public:
+    // InventoryLayout offset = 0x0, length = 0x3B8
+    // no_addr void GenericFixedInventoryLayout(const class GenericFixedInventoryLayout & _a1);// public missing arg names
+    GenericFixedInventoryLayout();// protected RVA = 0x154FD0
+    GenericFixedInventoryLayout* _CONSTRUCTOR();// protected RVA = 0x154FD0
+    virtual void setSize(int slotsW, int slotsH);// protected RVA = 0x14E750 vtable offset = 0x18
+    void _NV_setSize(int slotsW, int slotsH);// protected RVA = 0x14E750 vtable offset = 0x18
+    virtual ~GenericFixedInventoryLayout();// public RVA = 0x161F40 vtable offset = 0x0
+    void _DESTRUCTOR();// public RVA = 0x161F40 vtable offset = 0x0
+    // no_addr class GenericFixedInventoryLayout & operator=(const class GenericFixedInventoryLayout & _a1);// public missing arg names
+    // no_addr void __local_vftable_ctor_closure();// public
+    // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
+};
+
+// TODO move?
+class BackpackInventoryLayout : public GenericFixedInventoryLayout
+{
+public:
+    // GenericFixedInventoryLayout offset = 0x0, length = 0x3B8
+    // no_addr void BackpackInventoryLayout(const class BackpackInventoryLayout & _a1);// public missing arg names
+    BackpackInventoryLayout(bool standAlone);// public RVA = 0x155D80
+    BackpackInventoryLayout* _CONSTRUCTOR(bool standAlone);// public RVA = 0x155D80
+    virtual void setupSections(InventoryGUI* inventoryGUI, std::map<std::string, InventorySectionGUI*, std::less<std::string >, Ogre::STLAllocator<std::pair<std::string const, InventorySectionGUI*>, Ogre::GeneralAllocPolicy > >& sections, Inventory* inventory) override;// public RVA = 0x150200 vtable offset = 0x0
+    void _NV_setupSections(InventoryGUI* inventoryGUI, std::map<std::string, InventorySectionGUI*, std::less<std::string >, Ogre::STLAllocator<std::pair<std::string const, InventorySectionGUI*>, Ogre::GeneralAllocPolicy > >& sections, Inventory* inventory);// public RVA = 0x150200 vtable offset = 0x0
+    virtual ~BackpackInventoryLayout();// public RVA = 0x161F80 vtable offset = 0x0
+    void _DESTRUCTOR();// public RVA = 0x161F80 vtable offset = 0x0
+    // no_addr class BackpackInventoryLayout & operator=(const class BackpackInventoryLayout & _a1);// public missing arg names
+    // no_addr void __dflt_ctor_closure();// public
+    // no_addr void __local_vftable_ctor_closure();// public
+    // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
+};

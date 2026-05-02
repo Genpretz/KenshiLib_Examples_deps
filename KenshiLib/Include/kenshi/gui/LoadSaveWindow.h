@@ -37,3 +37,25 @@ public:
     // no_addr class LoadSaveWindow & operator=(const class LoadSaveWindow & _a1);// public missing arg names
     // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
 };
+
+class NewGameOptionsWindow;
+
+// TODO move?
+class ImportGameMenu : public LoadSaveWindow
+{
+public:
+    // LoadSaveWindow offset = 0x0, length = 0x108
+    // no_addr void ImportGameMenu(const class ImportGameMenu & _a1);// public missing arg names
+    ImportGameMenu();// public RVA = 0x4809B0
+    ImportGameMenu* _CONSTRUCTOR();// public RVA = 0x4809B0
+    virtual ~ImportGameMenu();// public RVA = 0x47B140 vtable offset = 0x0
+    void _DESTRUCTOR();// public RVA = 0x47B140 vtable offset = 0x0
+    void importPress(MyGUI::Widget* _sender);// private RVA = 0x47B350
+    void toggleAdvancedOptions(MyGUI::Widget* _sender);// private RVA = 0x47A3F0
+    virtual void select(int index) override;// private RVA = 0x47C760 vtable offset = 0x0
+    void _NV_select(int index);// private RVA = 0x47C760 vtable offset = 0x0
+    NewGameOptionsWindow* newGameOptions; // 0x108 Member
+    // no_addr class ImportGameMenu & operator=(const class ImportGameMenu & _a1);// public missing arg names
+    // no_addr void __local_vftable_ctor_closure();// public
+    // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
+};

@@ -14,9 +14,11 @@
 namespace wraps
 {
 
-	class BaseLayout
+	__declspec(dllimport) class BaseLayout
 	{
-	protected:
+	// HACK BFRIZZ make everything public because it's an internal, statically-linked class
+	public:
+	//protected:
 		BaseLayout() :
 			mMainWidget(nullptr)
 		{
@@ -166,7 +168,7 @@ namespace wraps
 			}
 		}
 
-	private:
+	//private:
 		std::string FindParentPrefix(MyGUI::Widget* _parent)
 		{
 			std::string prefix = _parent->getUserString("BaseLayoutPrefix");
@@ -247,10 +249,10 @@ namespace wraps
 			shutdown();
 		}
 
-	protected:
+	//protected:
 		MyGUI::Widget* mMainWidget;
 
-	private:
+	//private:
 		std::string mPrefix;
 		std::string mLayoutName;
 		MyGUI::VectorWidgetPtr mListWindowRoot;

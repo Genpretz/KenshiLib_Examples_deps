@@ -217,3 +217,7 @@ public:
     // no_addr void __local_vftable_ctor_closure();// public
     // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
 };
+
+// global static functions
+const std::string& getInstanceOwner(GameDataContainer& c, const GameData::ObjectInstance& inst);// RVA = 0x3878B0
+void moveInstanceData(GameDataContainer& source, GameDataContainer& dest, GameData::ObjectInstance& inst, bool rename, hand& handle);// RVA = 0x385590
