@@ -120,6 +120,41 @@ enum itemType
     OBJECT_TYPE_MAX
 };
 
+enum BuildingFunction
+{
+    BF_ANY,
+    BF_MINE,
+    BF_RESOURCE_STORAGE,
+    BF_RESEARCH,
+    BF_REFINERY,
+    BF_GENERATOR,
+    BF_BED,
+    BF_TRAINING,
+    BF_CAGE,
+    BF_SHOP,
+    BF_CRAFTING,
+    BF_CORPSE_DISPOSAL,
+    BF_TURRET,
+    BF_GENERAL_STORAGE,
+    BF_ITEM_FURNACE,
+    BF_LIGHT,
+    BF_TABLE,
+    BF_CHAIR,
+    BF_FLUFF,
+    BF_SHELL_WITH_INTERIOR,
+    BF_WALL,
+    BF_GATE,
+    BF_DOOR,
+    BF_BATTERY,
+    BF_THRONE,
+    BF_SKELETON_BED,
+    BF_RAIN_COLLECTOR,
+    BF_MINE_NATURAL,
+    BF_STEERING,
+    BF_ENGINE,
+    BF_LIQUID_TANK
+};
+
 enum CutDirection
 {
     CUT_DEFAULT,
@@ -952,4 +987,12 @@ enum CursorType
     INVALID_MOVEMENT_CURSOR,
     LOOT_CURSOR_RED,
     KNOCKOUT_CURSOR
+};
+
+enum MapZoomLevel
+{
+    ZOOM_MIN,
+    ZOOM_MID,
+    ZOOM_MAX,
+    ZOOM_CHARACTERS
 };

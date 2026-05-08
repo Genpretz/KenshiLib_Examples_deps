@@ -6,6 +6,7 @@
 #include <kenshi/BountyManager.h>
 #include <kenshi/util/YesNoMaybe.h>
 #include <kenshi/util/OgreUnordered.h>
+#include "gui/InventoryGUI.h"
 #include <ogre/OgreVector3.h>
 #include <string>
 #include <ogre/OgreQuaternion.h>
@@ -158,6 +159,22 @@ enum UseStuffState
     IN_NOTHING,
     IN_BED,
     IN_PRISON
+};
+
+class CharacterInventoryLayout : public InventoryLayout
+{
+public:
+    // InventoryLayout offset = 0x0, length = 0x3B8
+    // no_addr void CharacterInventoryLayout(const class CharacterInventoryLayout & _a1);// public missing arg names
+    CharacterInventoryLayout();// public RVA = 0x153930
+    CharacterInventoryLayout* _CONSTRUCTOR();// public RVA = 0x153930
+    virtual void setupSections(InventoryGUI* inventoryGUI, std::map<std::string, InventorySectionGUI*, std::less<std::string >, Ogre::STLAllocator<std::pair<std::string const, InventorySectionGUI*>, Ogre::GeneralAllocPolicy > >& inventorySections, Inventory* inventory) override;// public RVA = 0x14EDC0 vtable offset = 0x0
+    void _NV_setupSections(InventoryGUI* inventoryGUI, std::map<std::string, InventorySectionGUI*, std::less<std::string >, Ogre::STLAllocator<std::pair<std::string const, InventorySectionGUI*>, Ogre::GeneralAllocPolicy > >& inventorySections, Inventory* inventory);// public RVA = 0x14EDC0 vtable offset = 0x0
+    virtual ~CharacterInventoryLayout();// public RVA = 0x161F20 vtable offset = 0x0
+    void _DESTRUCTOR();// public RVA = 0x161F20 vtable offset = 0x0
+    // no_addr class CharacterInventoryLayout & operator=(const class CharacterInventoryLayout & _a1);// public missing arg names
+    // no_addr void __local_vftable_ctor_closure();// public
+    // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
 };
 
 class Character : public RootObject, public Ogre::GeneralAllocatedObject

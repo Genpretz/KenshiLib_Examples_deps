@@ -6,6 +6,22 @@
 #include <ogre/OgreVector3.h>
 #include <ogre/OgreQuaternion.h>
 
+class AnimalInventoryLayout : public InventoryLayout
+{
+public:
+    // InventoryLayout offset = 0x0, length = 0x3B8
+    // no_addr void AnimalInventoryLayout(const class AnimalInventoryLayout & _a1);// public missing arg names
+    AnimalInventoryLayout();// public RVA = 0x155270
+    AnimalInventoryLayout* _CONSTRUCTOR();// public RVA = 0x155270
+    virtual void setupSections(InventoryGUI* inventoryGUI, std::map<std::string, InventorySectionGUI*, std::less<std::string >, Ogre::STLAllocator<std::pair<std::string const, InventorySectionGUI*>, Ogre::GeneralAllocPolicy > >& inventorySections, Inventory* inventory) override;// public RVA = 0x14F450 vtable offset = 0x0
+    void _NV_setupSections(InventoryGUI* inventoryGUI, std::map<std::string, InventorySectionGUI*, std::less<std::string >, Ogre::STLAllocator<std::pair<std::string const, InventorySectionGUI*>, Ogre::GeneralAllocPolicy > >& inventorySections, Inventory* inventory);// public RVA = 0x14F450 vtable offset = 0x0
+    virtual ~AnimalInventoryLayout();// public RVA = 0x161F50 vtable offset = 0x0
+    void _DESTRUCTOR();// public RVA = 0x161F50 vtable offset = 0x0
+    // no_addr class AnimalInventoryLayout & operator=(const class AnimalInventoryLayout & _a1);// public missing arg names
+    // no_addr void __local_vftable_ctor_closure();// public
+    // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
+};
+
 class CharacterAnimal : public Character
 {
 public:

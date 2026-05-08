@@ -4,6 +4,7 @@
 #include "util/lektor.h"
 #include "util/TimeOfDay.h"
 #include "util/StringPair.h"
+#include "gui/InventoryGUI.h"
 
 #include <ogre/OgreVector3.h>
 #include <kenshi/util/OgreUnordered.h>
@@ -22,6 +23,22 @@ class Character;
 class GameData;
 class Item;
 class RootObject;
+
+class LimbsInventoryLayout : public InventoryLayout
+{
+public:
+    // InventoryLayout offset = 0x0, length = 0x3B8
+    // no_addr void LimbsInventoryLayout(const class LimbsInventoryLayout & _a1);// public missing arg names
+    LimbsInventoryLayout(Character* c);// public RVA = 0x157420
+    LimbsInventoryLayout* _CONSTRUCTOR(Character* c);// public RVA = 0x157420
+    virtual ~LimbsInventoryLayout();// public RVA = 0x157940 vtable offset = 0x0
+    void _DESTRUCTOR();// public RVA = 0x157940 vtable offset = 0x0
+    virtual void setupSections(InventoryGUI* inventoryGUI, std::map<std::string, InventorySectionGUI*, std::less<std::string >, Ogre::STLAllocator<std::pair<std::string const, InventorySectionGUI*>, Ogre::GeneralAllocPolicy > >& inventorySections, Inventory* inventory) override;// public RVA = 0x153540 vtable offset = 0x0
+    void _NV_setupSections(InventoryGUI* inventoryGUI, std::map<std::string, InventorySectionGUI*, std::less<std::string >, Ogre::STLAllocator<std::pair<std::string const, InventorySectionGUI*>, Ogre::GeneralAllocPolicy > >& inventorySections, Inventory* inventory);// public RVA = 0x153540 vtable offset = 0x0
+    Character* character; // 0x3B8 Member
+    // no_addr class LimbsInventoryLayout & operator=(const class LimbsInventoryLayout & _a1);// public missing arg names
+    // virtual void * __vecDelDtor(unsigned int _a1) = 0;// public vtable offset = 0x0 missing arg names
+};
 
 // TODO move?
 class RobotLimbs
